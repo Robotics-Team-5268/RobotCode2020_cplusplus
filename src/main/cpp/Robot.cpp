@@ -59,7 +59,6 @@ void Robot::AddSmartDashboardItems() {
 	frc::SmartDashboard::PutNumber("leftRate", CommandBase::leftEncoder->getRate());
 	frc::SmartDashboard::PutBoolean("leftDirection", CommandBase::leftEncoder->getDirection());
 	frc::SmartDashboard::PutBoolean("leftStopped", CommandBase::leftEncoder->getStopped());
-	frc::SmartDashboard::PutNumber("Ultrasonic", CommandBase::ultrasonic->getVoltage());
 	frc::SmartDashboard::PutNumber("distance traveled with drive straight", (CommandBase::leftEncoder->getDistance() + (CommandBase::rightEncoder->getDistance() * 7)) / 2);
 }
 
