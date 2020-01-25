@@ -1,5 +1,5 @@
-#include <frc/WPILib.h>
 #include "commands/DriveStraightDistance.h"
+#include <frc/smartdashboard/SmartDashboard.h>
 #include "subsystems/Encoders.h"
 #include "commands/Velocity.h"
 

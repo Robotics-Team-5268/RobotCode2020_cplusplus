@@ -1,4 +1,5 @@
 #include <AutonomousChooser.h>
+#include <frc/RobotController.h>
 #include "subsystems/REVDigitBoard.h"
 #include "SuspendableThread.h"
 #include "RobotMap.h"

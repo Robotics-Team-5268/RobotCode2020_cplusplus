@@ -1,5 +1,6 @@
 #pragma once
 
+#include <frc/AnalogInput.h>
 #include <frc/commands/Subsystem.h>
 
 #include "RobotMap.h"

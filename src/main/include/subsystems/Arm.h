@@ -2,6 +2,7 @@
 
 #include <frc/commands/Subsystem.h>
 #include <frc/Counter.h>
+#include <frc/Talon.h>
 
 #include "RobotMap.h"
 

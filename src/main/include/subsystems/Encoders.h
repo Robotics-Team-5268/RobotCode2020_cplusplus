@@ -1,7 +1,7 @@
 #pragma once
 
 #include <frc/commands/Subsystem.h>
-#include <frc/WPILib.h>
+#include <frc/Encoder.h>
 
 class Encoders : public frc::Subsystem {
  private:

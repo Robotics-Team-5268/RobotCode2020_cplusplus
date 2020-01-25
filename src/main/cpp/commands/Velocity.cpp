@@ -1,8 +1,8 @@
-#include <frc/WPILib.h>
 #include "CommandBase.h"
 #include <frc/PIDController.h>
 #include <frc/PIDOutput.h>
 #include <frc/PIDSource.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 #include "commands/Velocity.h"
 
 Velocity::Velocity() : CommandBase("Velocity") {

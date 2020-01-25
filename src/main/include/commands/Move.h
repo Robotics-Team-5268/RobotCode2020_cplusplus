@@ -1,8 +1,8 @@
 #pragma once
 
 #include <frc/commands/Command.h>
+#include <frc/PIDController.h>
 #include <frc/Timer.h>
-#include <frc/WPILib.h>
 
 #include "CommandBase.h"
 

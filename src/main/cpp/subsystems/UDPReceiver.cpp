@@ -1,3 +1,4 @@
+#include <frc/smartdashboard/SmartDashboard.h>
 #include "RobotMap.h"
 #include "CommandBase.h"
 

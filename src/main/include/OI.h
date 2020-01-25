@@ -1,6 +1,10 @@
 #pragma once
 
-#include "frc/WPILib.h"
+#include <memory>
+#include <vector>
+
+#include <frc/Joystick.h>
+#include <frc/buttons/JoystickButton.h>
 
 class OI {
  private:

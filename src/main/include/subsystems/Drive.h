@@ -1,7 +1,10 @@
 #pragma once
 
+#include <frc/AnalogGyro.h>
 #include <frc/commands/Subsystem.h>
 #include <frc/drive/DifferentialDrive.h>
+#include <frc/SpeedControllerGroup.h>
+#include <frc/Talon.h>
 #include <frc/Ultrasonic.h>
 
 #include "RobotMap.h"

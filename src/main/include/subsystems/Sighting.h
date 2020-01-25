@@ -2,7 +2,6 @@
 #define Sighting_H
 
 #include <frc/commands/Subsystem.h>
-#include <frc/WPILib.h>
 
 #include <atomic>
 #include <chrono> // May not be needed

@@ -2,6 +2,7 @@
 
 #include <frc/commands/Subsystem.h>
 #include <frc/drive/DifferentialDrive.h>
+#include <frc/Talon.h>
 
 #include "RobotMap.h"
 

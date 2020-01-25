@@ -3,7 +3,6 @@
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/SpeedControllerGroup.h>
 #include <frc/SpeedController.h>
-#include <frc/WPILib.h>
 
 #define DRIVE_SPEED_CONTROLLER_FL_CHANNEL 0
 #define DRIVE_SPEED_CONTROLLER_FR_CHANNEL 1
