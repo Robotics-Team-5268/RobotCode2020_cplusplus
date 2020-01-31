@@ -3,7 +3,6 @@
 #include "OI.h"
 #include "frc/smartDashboard/SmartDashboard.h"
 #include "Robot.h"
-#include "commands/DriveStraightDistance.h"
 #include "commands/MovePneumatics.h"
 
 OI::OI() {
@@ -13,7 +12,6 @@ OI::OI() {
     driverBtns.push_back(new frc::JoystickButton(driverJoystick.get(), i));
     mechanismsBtns.push_back(new frc::JoystickButton(mechanismsJoystick.get(), i));
   }
-  driverBtns[1]->WhenPressed(new DriveStraightDistance(100));
   mechanismsBtns[2]->WhileHeld(new MovePneumatics(frc::DoubleSolenoid::kForward)); //This should be 'x' button on the XBox controller
   mechanismsBtns[2]->WhenReleased(new MovePneumatics(frc::DoubleSolenoid::kOff)); //This should be 'x' button on the XBox controller
   mechanismsBtns[3]->WhileHeld(new MovePneumatics(frc::DoubleSolenoid::kReverse)); //This should be 'y' button on the XBox controller
