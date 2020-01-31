@@ -1,0 +1,3 @@
+New Speed Controllers will be Falcon 500
+REV Robotics Color Sensor V3
+Ball intake - 2 speeds, Talon
