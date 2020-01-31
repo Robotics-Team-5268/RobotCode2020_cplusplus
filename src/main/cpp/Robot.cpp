@@ -47,19 +47,6 @@ void Robot::AddSmartDashboardItems() {
 	// frc::SmartDashboard::PutValue("Solenoid Value", CommandBase::pneumatics->getValue())
 	frc::SmartDashboard::PutNumber("Gyro Angle", CommandBase::drive->getGyroAngle());
 	frc::SmartDashboard::PutNumber("Gyro Rate", CommandBase::drive->getGyroRate());
-	frc::SmartDashboard::PutNumber("rightcount", CommandBase::rightEncoder->getCount());
-	frc::SmartDashboard::PutNumber("rightRaw Count", CommandBase::rightEncoder->getRaw());
-	frc::SmartDashboard::PutNumber("rightDistance", CommandBase::rightEncoder->getDistance()*7);
-	frc::SmartDashboard::PutNumber("rightRate", CommandBase::rightEncoder->getRate());
-	frc::SmartDashboard::PutBoolean("rightDirection", CommandBase::rightEncoder->getDirection());
-	frc::SmartDashboard::PutBoolean("rightStopped", CommandBase::rightEncoder->getStopped());
-	frc::SmartDashboard::PutNumber("leftcount", CommandBase::leftEncoder->getCount());
-	frc::SmartDashboard::PutNumber("leftRaw Count", CommandBase::leftEncoder->getRaw());
-	frc::SmartDashboard::PutNumber("leftDistance", CommandBase::leftEncoder->getDistance());
-	frc::SmartDashboard::PutNumber("leftRate", CommandBase::leftEncoder->getRate());
-	frc::SmartDashboard::PutBoolean("leftDirection", CommandBase::leftEncoder->getDirection());
-	frc::SmartDashboard::PutBoolean("leftStopped", CommandBase::leftEncoder->getStopped());
-	frc::SmartDashboard::PutNumber("distance traveled with drive straight", (CommandBase::leftEncoder->getDistance() + (CommandBase::rightEncoder->getDistance() * 7)) / 2);
 }
 
 #ifndef RUNNING_FRC_TESTS
