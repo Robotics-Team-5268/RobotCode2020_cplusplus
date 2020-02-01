@@ -1,4 +1,6 @@
 #include "Robot.h"
+
+#include "RobotConfig.h"
 #include "subsystems/Drive.h"
 #include "CommandBase.h"
 
@@ -44,9 +46,11 @@ void Robot::TeleopPeriodic() {
 void Robot::TestPeriodic() {}
 
 void Robot::AddSmartDashboardItems() {
-	// frc::SmartDashboard::PutValue("Solenoid Value", CommandBase::pneumatics->getValue())
-	frc::SmartDashboard::PutNumber("Gyro Angle", CommandBase::drive->getGyroAngle());
-	frc::SmartDashboard::PutNumber("Gyro Rate", CommandBase::drive->getGyroRate());
+    #if( PNEUMATICS_SUPPORT )
+        frc::SmartDashboard::PutValue("Solenoid Value", CommandBase::pneumatics->getValue())
+    #endif
+    frc::SmartDashboard::PutNumber("Gyro Angle", CommandBase::drive->getGyroAngle());
+    frc::SmartDashboard::PutNumber("Gyro Rate", CommandBase::drive->getGyroRate());
 }
 
 #ifndef RUNNING_FRC_TESTS

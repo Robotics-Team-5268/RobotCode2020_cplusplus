@@ -1,21 +1,27 @@
 #include "commands/MovePneumatics.h"
+
+#include "RobotConfig.h"
 #include "CommandBase.h"
 
 MovePneumatics::MovePneumatics(frc::DoubleSolenoid::Value v) : CommandBase("MovePneumatics") {
-    Requires(CommandBase::pneumatics.get());
+    #if( PNEUMATICS_SUPPORT )
+        Requires(CommandBase::pneumatics.get());
+    #endif
     value = v;
 }
 
 void MovePneumatics::Initialize() {}
 
 void MovePneumatics::Execute() {
-    if (value == frc::DoubleSolenoid::kForward) {
-        CommandBase::pneumatics->Forward();
-    } else if (value == frc::DoubleSolenoid::kReverse){
-        CommandBase::pneumatics->Reverse();
-    } else {
-        CommandBase::pneumatics->Off();
-    }
+    #if( PNEUMATICS_SUPPORT )
+        if (value == frc::DoubleSolenoid::kForward) {
+            CommandBase::pneumatics->Forward();
+        } else if (value == frc::DoubleSolenoid::kReverse){
+            CommandBase::pneumatics->Reverse();
+        } else {
+            CommandBase::pneumatics->Off();
+        }
+    #endif
 }
 
 bool MovePneumatics::IsFinished() { 

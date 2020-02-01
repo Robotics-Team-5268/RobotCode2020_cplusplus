@@ -5,8 +5,11 @@
 #include <frc/commands/CommandGroup.h>
 #include <string.h>
 
+#include "RobotConfig.h"
 #include "subsystems/Drive.h"
-#include "subsystems/Pneumatics.h"
+#if( PNEUMATICS_SUPPORT )
+    #include "subsystems/Pneumatics.h"
+#endif
 #include "OI.h"
 
 class CommandBase : public frc::CommandGroup {
@@ -17,6 +20,8 @@ class CommandBase : public frc::CommandGroup {
 
   
   static std::unique_ptr<Drive> drive;
-  static std::unique_ptr<Pneumatics> pneumatics;
+  #if( PNEUMATICS_SUPPORT )
+      static std::unique_ptr<Pneumatics> pneumatics;
+  #endif
   static std::unique_ptr<OI> oi;
 };
