@@ -7,6 +7,7 @@
 #include <frc/Talon.h>
 #include <frc/Ultrasonic.h>
 
+#include "RobotConfig.h"
 #include "RobotMap.h"
 
 class Drive : public frc::Subsystem {
@@ -26,9 +27,9 @@ class Drive : public frc::Subsystem {
 	float velocityToCommandSlope[4];
 	float velocityToCommandIntercept[4];
 
-	frc::AnalogGyro gyro{GYRO_ANALOG_PORT};
- 	
-
+    #if( GYRO_SUPPORT )
+	    frc::AnalogGyro gyro{GYRO_ANALOG_PORT};
+    #endif
 
     //std::ofstream fout;
  public:
@@ -37,10 +38,12 @@ class Drive : public frc::Subsystem {
 	virtual void setMotors(float leftSpeed, float rightSpeed);
 	virtual void safetyOff() {diffDrive.SetSafetyEnabled(false);}
 	virtual void takeInput();
-	frc::AnalogGyro* getGyro();
-	float getGyroAngle();
-	float getGyroRate();
-	void resetGyro();
-	void calibrateGyro();
+	#if( GYRO_SUPPORT )
+	    frc::AnalogGyro* getGyro();
+	    float getGyroAngle();
+	    float getGyroRate();
+	    void resetGyro();
+	    void calibrateGyro();
+	#endif
 	void SetVelocity(float left, float right);
 };

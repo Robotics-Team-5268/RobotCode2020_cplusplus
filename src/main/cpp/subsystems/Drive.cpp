@@ -55,21 +55,23 @@ void Drive::setMotors(float leftSpeed, float rightSpeed) {
 	frc::SmartDashboard::PutNumber("Speed Controller BR", speedControllerBR.Get());
 }
 
-frc::AnalogGyro* Drive::getGyro() {
-	return &gyro;
-}
-float Drive::getGyroAngle() {
-	return gyro.GetAngle();
-}
-float Drive::getGyroRate() {
-	return gyro.GetRate();
-}
-void Drive::resetGyro() {
-	gyro.Reset();
-}
-void Drive::calibrateGyro() {
-	gyro.Calibrate();
-}
+#if( GYRO_SUPPORT )
+	frc::AnalogGyro* Drive::getGyro() {
+		return &gyro;
+	}
+	float Drive::getGyroAngle() {
+		return gyro.GetAngle();
+	}
+	float Drive::getGyroRate() {
+		return gyro.GetRate();
+	}
+	void Drive::resetGyro() {
+		gyro.Reset();
+	}
+	void Drive::calibrateGyro() {
+		gyro.Calibrate();
+	}
+#endif
 
 void Drive::SetVelocity(float left, float right) {
 	float leftSpeed = left * MAX_SPEED;

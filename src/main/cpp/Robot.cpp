@@ -12,7 +12,9 @@ AutonomousChooser Robot::AutoChooser;
 
 void Robot::RobotInit() {
     CommandBase::init();
-	CommandBase::drive->calibrateGyro();
+	#if( GYRO_SUPPORT )
+		CommandBase::drive->calibrateGyro();
+	#endif
 	CommandBase::drive->safetyOff();
 }
 
@@ -34,7 +36,9 @@ void Robot::AutonomousPeriodic() {
 
 void Robot::TeleopInit() {
 	//frc::SmartDashboard::PutNumber("breakpoint", 200);
-	CommandBase::drive->resetGyro();
+	#if( GYRO_SUPPORT )
+		CommandBase::drive->resetGyro();
+	#endif
 	CommandBase::drive->setMotors(0.0, 0.0);
 }
 
@@ -49,8 +53,10 @@ void Robot::AddSmartDashboardItems() {
     #if( PNEUMATICS_SUPPORT )
         frc::SmartDashboard::PutValue("Solenoid Value", CommandBase::pneumatics->getValue())
     #endif
-    frc::SmartDashboard::PutNumber("Gyro Angle", CommandBase::drive->getGyroAngle());
-    frc::SmartDashboard::PutNumber("Gyro Rate", CommandBase::drive->getGyroRate());
+    #if( GYRO_SUPPORT )
+        frc::SmartDashboard::PutNumber("Gyro Angle", CommandBase::drive->getGyroAngle());
+        frc::SmartDashboard::PutNumber("Gyro Rate", CommandBase::drive->getGyroRate());
+    #endif
 }
 
 #ifndef RUNNING_FRC_TESTS
