@@ -12,12 +12,12 @@
 
 class Drive : public frc::Subsystem {
  private:
-	WPI_TalonSRX speedControllerFL{DRIVE_SPEED_CONTROLLER_FL_CHANNEL};
-	WPI_TalonSRX speedControllerBL{DRIVE_SPEED_CONTROLLER_BL_CHANNEL};
+	WPI_TalonFX speedControllerFL{DRIVE_SPEED_CONTROLLER_FL_CHANNEL};
+	WPI_TalonFX speedControllerBL{DRIVE_SPEED_CONTROLLER_BL_CHANNEL};
 	frc::SpeedControllerGroup leftSC{speedControllerFL, speedControllerBL};
 
-	WPI_TalonSRX speedControllerFR{DRIVE_SPEED_CONTROLLER_FR_CHANNEL};
-	WPI_TalonSRX speedControllerBR{DRIVE_SPEED_CONTROLLER_BR_CHANNEL};
+	WPI_TalonFX speedControllerFR{DRIVE_SPEED_CONTROLLER_FR_CHANNEL};
+	WPI_TalonFX speedControllerBR{DRIVE_SPEED_CONTROLLER_BR_CHANNEL};
 	frc::SpeedControllerGroup rightSC{speedControllerFR, speedControllerBR};
 
 	frc::DifferentialDrive diffDrive{leftSC, rightSC};
