@@ -3,6 +3,11 @@
 
 #include <frc/smartDashBoard/SmartDashBoard.h>
 
+#define SCFL_INVERTED false
+#define SCBL_INVERTED false
+#define SCFR_INVERTED false
+#define SCBR_INVERTED false
+
 Drive::Drive() : Subsystem("Drive") {
 	oldLeftSpeed = 0.0;
 	oldRightSpeed = 0.0;
