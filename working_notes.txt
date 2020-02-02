@@ -1,4 +1,17 @@
-New Speed Controllers will be Falcon 500
-REV Robotics Color Sensor V3
-Ball intake - 2 speeds, Talon
-4 Victor SPXs for control wenches and lifting system
+ARM
+ - Talon SRX, Bosch Motor, Bosch Encoder.
+ - Extend to 90 degrees
+
+Drive
+ - 4 Falcon500s
+
+Winches
+ - Tellescoping - 1 motor - Victor SPXs
+ - Pullup - 2 motors - Victor SPX
+
+Ball intake
+ - 3 or 4 Talon SRXs
+
+Color Wheel
+ - Rev Robotics Color Sensor V3
+ - Talon SRX
