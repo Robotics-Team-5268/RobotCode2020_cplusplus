@@ -1,5 +1,6 @@
 #include "CommandBase.h"
 
+std::unique_ptr<ColorWheel> CommandBase::colorWheel;
 std::unique_ptr<Drive> CommandBase::drive;
 std::unique_ptr<OI> CommandBase::oi;
 #if( PNEUMATICS_SUPPORT )
@@ -15,6 +16,7 @@ CommandBase::CommandBase() : frc::CommandGroup() {
 }
 
 void CommandBase::init() {
+    colorWheel.reset( new ColorWheel() );
     drive.reset(new Drive());
     #if( PNEUMATICS_SUPPORT )
         pneumatics.reset(new Pneumatics());
