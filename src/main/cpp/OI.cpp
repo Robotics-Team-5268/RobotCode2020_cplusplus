@@ -5,6 +5,7 @@
 #include <frc/DoubleSolenoid.h>
 #include "frc/smartDashboard/SmartDashboard.h"
 #include "Robot.h"
+#include "commands/ReadColorSensor.h"
 #if( PNEUMATICS_SUPPORT )
     #include "commands/MovePneumatics.h"
 #endif
@@ -20,6 +21,9 @@ OI::OI() {
         mechanismsBtns.push_back(new frc::JoystickButton(mechanismsJoystick.get(), i));
     #endif
   }
+
+  driverBtns[2]->WhileHeld( new ReadColorSensor() ); //This should be 'x' button on the XBox controller
+
   #if( PNEUMATICS_SUPPORT )
       mechanismsBtns[2]->WhileHeld(new MovePneumatics(frc::DoubleSolenoid::kForward)); //This should be 'x' button on the XBox controller
       mechanismsBtns[2]->WhenReleased(new MovePneumatics(frc::DoubleSolenoid::kOff)); //This should be 'x' button on the XBox controller
