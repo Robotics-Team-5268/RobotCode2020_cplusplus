@@ -1,8 +1,10 @@
 #pragma once
 
+#include <ctre/Phoenix.h>
 #include <frc/commands/Subsystem.h>
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"
+#include "RobotMap.h"
 
 class ColorWheel : public frc::Subsystem {
     public:
@@ -26,5 +28,6 @@ class ColorWheel : public frc::Subsystem {
     private:
         rev::ColorSensorV3 mColorSensor;
         rev::ColorMatch mColorMatcher;
+        WPI_TalonSRX speedController{COLOR_WHEEL_SPEED_CONTROLLER};
 
 };
