@@ -10,11 +10,13 @@ public:
     BallIntake();
     virtual ~BallIntake();
 
+    void setSpeed( double aPercent );
+
 private:
     WPI_TalonSRX speedController1{BALL_INTAKE_SPEED_CONTROLLER_1};
     WPI_TalonSRX speedController2{BALL_INTAKE_SPEED_CONTROLLER_2};
     WPI_TalonSRX speedController3{BALL_INTAKE_SPEED_CONTROLLER_3};
 
-    frc::SpeedControllerGroup sppedControlGroup{speedController1, speedController2, speedController3};
+    frc::SpeedControllerGroup speedControlGroup{speedController1, speedController2, speedController3};
 
 };
