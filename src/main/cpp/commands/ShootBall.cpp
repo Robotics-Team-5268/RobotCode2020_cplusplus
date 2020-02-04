@@ -1,13 +1,13 @@
 #include "commands/ShootBall.h"
 
 ShootBall::ShootBall() : CommandBase("ShootBall") {
-    Requires( CommandBase::ballIntake.get() );
+    Requires( ballIntake.get() );
 }
 
 void ShootBall::Initialize() {}
 
 void ShootBall::Execute() {
-    ballIntake->setSpeed( 0.5 );
+    ballIntake->setUpperSpeed( 0.8 );
 }
 
 bool ShootBall::IsFinished() { 
@@ -16,7 +16,7 @@ bool ShootBall::IsFinished() {
 
 void ShootBall::End()
 {
-    ballIntake->setSpeed( 0.0 );
+    ballIntake->setUpperSpeed( 0.0 );
 }
 
 void ShootBall::Interrupted()

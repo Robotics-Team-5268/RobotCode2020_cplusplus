@@ -1,13 +1,14 @@
 #include "commands/PickupBall.h"
 
 PickupBall::PickupBall() : CommandBase("PickupBall") {
-    Requires( CommandBase::ballIntake.get() );
+    Requires( ballIntake.get() );
 }
 
 void PickupBall::Initialize() {}
 
 void PickupBall::Execute() {
-    ballIntake->setSpeed( 0.2 );
+    ballIntake->setLowerSpeed( 0.7 );
+    ballIntake->setUpperSpeed( 0.3 );
 }
 
 bool PickupBall::IsFinished() { 
@@ -16,7 +17,8 @@ bool PickupBall::IsFinished() {
 
 void PickupBall::End()
 {
-    ballIntake->setSpeed( 0.0 );
+    ballIntake->setLowerSpeed( 0.0 );
+    ballIntake->setUpperSpeed( 0.0 );
 }
 
 void PickupBall::Interrupted()

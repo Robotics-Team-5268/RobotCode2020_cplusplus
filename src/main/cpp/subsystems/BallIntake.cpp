@@ -9,7 +9,12 @@ BallIntake::~BallIntake()
 
 }
 
-void BallIntake::setSpeed( double aPercent )
+void BallIntake::setLowerSpeed( double aPercent )
 {
-    speedControlGroup.Set( aPercent );
+    lowerSpeedController.Set( aPercent );
+}
+
+void BallIntake::setUpperSpeed( double aPercent )
+{
+    upperSpeedController.Set( aPercent );
 }
