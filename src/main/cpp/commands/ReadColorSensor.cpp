@@ -4,14 +4,14 @@
 
 
 ReadColorSensor::ReadColorSensor() : CommandBase("ReadColorSensor") {
-    Requires( CommandBase::colorWheel.get() );
+    Requires( colorWheel.get() );
 }
 
 void ReadColorSensor::Initialize() {}
 
 void ReadColorSensor::Execute() {
-    frc::Color detectedColor = CommandBase::colorWheel->getColor();
-    ColorWheel::MatchedColor matchedColor = CommandBase::colorWheel->getMatchedColor();
+    frc::Color detectedColor = colorWheel->getColor();
+    ColorWheel::MatchedColor matchedColor = colorWheel->getMatchedColor();
 
     std::string colorString = "No Match";
     switch( matchedColor )
