@@ -3,6 +3,7 @@
 #include "RobotConfig.h"
 #include "subsystems/Drive.h"
 #include "CommandBase.h"
+#include "Vision.hpp"
 
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
@@ -12,13 +13,16 @@ std::unique_ptr<Autonomous> Robot::autonomousCommand;
 AutonomousChooser Robot::AutoChooser;
 
 static std::unique_ptr<frc::Relay> cameraRelay;
-
+static std::unique_ptr<Vision> vision;
 
 void Robot::RobotInit() {
     CommandBase::init();
     const int CameraRelayChannel = 3;
     cameraRelay.reset( new frc::Relay( CameraRelayChannel ) );
     cameraRelay->Set( frc::Relay::kForward );
+
+    vision.reset( new Vision() );
+
 	#if( GYRO_SUPPORT )
 		CommandBase::drive->calibrateGyro();
 	#endif
