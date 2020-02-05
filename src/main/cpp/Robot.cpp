@@ -6,12 +6,19 @@
 
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <frc/Relay.h>
 
 std::unique_ptr<Autonomous> Robot::autonomousCommand;
 AutonomousChooser Robot::AutoChooser;
 
+static std::unique_ptr<frc::Relay> cameraRelay;
+
+
 void Robot::RobotInit() {
     CommandBase::init();
+    const int CameraRelayChannel = 3;
+    cameraRelay.reset( new frc::Relay( CameraRelayChannel ) );
+    cameraRelay->Set( frc::Relay::kForward );
 	#if( GYRO_SUPPORT )
 		CommandBase::drive->calibrateGyro();
 	#endif
