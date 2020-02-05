@@ -15,9 +15,25 @@ class ColorWheel : public frc::Subsystem {
             NO_MATCH
         };
 
+        struct ColorReading
+        {
+            ColorReading()
+                : matchedColor( NO_MATCH )
+                , matchConfidence( 0.0 )
+            {
+
+            }
+
+            frc::Color color;
+            MatchedColor matchedColor;
+            double matchConfidence;
+        };
+
         ColorWheel();
 
         virtual ~ColorWheel();
+
+        ColorReading readColorSensor();
 
         frc::Color getColor();
 
