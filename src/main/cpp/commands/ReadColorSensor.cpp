@@ -10,11 +10,10 @@ ReadColorSensor::ReadColorSensor() : CommandBase("ReadColorSensor") {
 void ReadColorSensor::Initialize() {}
 
 void ReadColorSensor::Execute() {
-    frc::Color detectedColor = colorWheel->getColor();
-    ColorWheel::MatchedColor matchedColor = colorWheel->getMatchedColor();
+    ColorWheel::ColorReading colorReading = colorWheel->readColorSensor();
 
     std::string colorString = "No Match";
-    switch( matchedColor )
+    switch( colorReading.matchedColor )
     {
     case ColorWheel::BLUE:
         colorString = "Blue";
@@ -33,10 +32,11 @@ void ReadColorSensor::Execute() {
         break;
     }
 
-    frc::SmartDashboard::PutNumber("Red", detectedColor.red);
-    frc::SmartDashboard::PutNumber("Green", detectedColor.green);
-    frc::SmartDashboard::PutNumber("Blue", detectedColor.blue);
-    frc::SmartDashboard::PutString("Detected Color", colorString);    
+    frc::SmartDashboard::PutNumber("Red", colorReading.color.red);
+    frc::SmartDashboard::PutNumber("Green", colorReading.color.green);
+    frc::SmartDashboard::PutNumber("Blue", colorReading.color.blue);
+    frc::SmartDashboard::PutNumber("Confidence", colorReading.matchConfidence);
+    frc::SmartDashboard::PutString("Detected Color", colorString);
 }
 
 bool ReadColorSensor::IsFinished() { 

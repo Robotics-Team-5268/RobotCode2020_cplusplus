@@ -21,34 +21,29 @@ ColorWheel::~ColorWheel()
 
 }
 
-frc::Color ColorWheel::getColor()
+ColorWheel::ColorReading ColorWheel::readColorSensor()
 {
-    return mColorSensor.GetColor();
-}
+    ColorReading reading;
+    reading.color = mColorSensor.GetColor();
+    frc::Color closestColor = mColorMatcher.MatchClosestColor( reading.color, reading.matchConfidence );
 
-ColorWheel::MatchedColor ColorWheel::getMatchedColor()
-{
-    double confidence = 0.0;
-    frc::Color detectedColor = getColor();
-    frc::Color matchedColor = mColorMatcher.MatchClosestColor( detectedColor, confidence );
+    if( sBlueTarget == closestColor )
+    {
+        reading.matchedColor = BLUE;
+    }
+    else if( sGreenTarget == closestColor )
+    {
+        reading.matchedColor = GREEN;
+    }
+    else if( sRedTarget == closestColor )
+    {
+        reading.matchedColor = RED;
+    }
+    else if( sYellowTarget == closestColor )
+    {
+        reading.matchedColor = YELLOW;
+    }    
 
-    MatchedColor matchValue = NO_MATCH;
-    if( sBlueTarget == matchedColor )
-    {
-        matchValue = BLUE;
-    }
-    else if( sGreenTarget == matchedColor )
-    {
-        matchValue = GREEN;
-    }
-    else if( sRedTarget == matchedColor )
-    {
-        matchValue = RED;
-    }
-    else if( sYellowTarget == matchedColor )
-    {
-        matchValue = YELLOW;
-    }
+    return reading;
 
-    return matchValue;
 }
