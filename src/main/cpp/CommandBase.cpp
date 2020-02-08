@@ -8,6 +8,7 @@ std::unique_ptr<OI> CommandBase::oi;
 #if( PNEUMATICS_SUPPORT )
     std::unique_ptr<Pneumatics> CommandBase::pneumatics;
 #endif
+std::unique_ptr<Winches> CommandBase::winches;
 
 CommandBase::CommandBase(const std::string &name) : frc::CommandGroup(name) {
   
@@ -26,6 +27,7 @@ void CommandBase::init() {
     #if( PNEUMATICS_SUPPORT )
         pneumatics.reset(new Pneumatics());
     #endif
+    winches.reset( new Winches() );
     // Keep at the end
 	oi.reset(new OI());
 }

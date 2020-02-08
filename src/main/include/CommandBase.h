@@ -13,6 +13,7 @@
 #if( PNEUMATICS_SUPPORT )
     #include "subsystems/Pneumatics.h"
 #endif
+#include "subsystems/Winches.h"
 #include "OI.h"
 
 class CommandBase : public frc::CommandGroup {
@@ -28,5 +29,6 @@ class CommandBase : public frc::CommandGroup {
   #if( PNEUMATICS_SUPPORT )
       static std::unique_ptr<Pneumatics> pneumatics;
   #endif
+  static std::unique_ptr<Winches> winches;
   static std::unique_ptr<OI> oi;
 };
