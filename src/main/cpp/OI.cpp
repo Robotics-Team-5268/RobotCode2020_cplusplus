@@ -8,8 +8,10 @@
 #include "commands/Lift.h"
 #include "commands/MoveArm.h"
 #include "commands/MoveFlipper.h"
+#include "commands/MoveStinger.h"
 #include "commands/PickupBall.h"
 #include "commands/ReadColorSensor.h"
+#include "commands/ShiftGears.h"
 #include "commands/ShootBall.h"
 #include "commands/Telescope.h"
 #if( PNEUMATICS_SUPPORT )
@@ -37,18 +39,18 @@ OI::OI() {
 
   driverBtns[6]->WhenPressed( new MoveArm( LiftArm::cRaiseArm ) );
 
-  #if( PNEUMATICS_SUPPORT )
-      mechanismsBtns[2]->WhileHeld(new MovePneumatics(frc::DoubleSolenoid::kForward)); //This should be 'x' button on the XBox controller
-      mechanismsBtns[2]->WhenReleased(new MovePneumatics(frc::DoubleSolenoid::kOff)); //This should be 'x' button on the XBox controller
-      mechanismsBtns[3]->WhileHeld(new MovePneumatics(frc::DoubleSolenoid::kReverse)); //This should be 'y' button on the XBox controller
-      mechanismsBtns[3]->WhenReleased(new MovePneumatics(frc::DoubleSolenoid::kOff)); //This should be 'y' button on the XBox controller
-  #endif
+  driverBtns[8]->WhenPressed(new ShiftGears(frc::DoubleSolenoid::kForward));
+  driverBtns[9]->WhenPressed(new ShiftGears(frc::DoubleSolenoid::kReverse));
 
-  mechanismBtns[4]->WhileHeld( new Telescope( true ) );
-  mechanismBtns[5]->WhileHeld( new Telescope( false ) );
 
-  mechanismBtns[6]->WhileHeld( new Lift( true ) );
-  mechanismBtns[7]->WhileHeld( new Lift( false ) );
+  mechanismsBtns[2]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kForward)); //This should be 'x' button on the XBox controller
+  mechanismsBtns[3]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kReverse)); //This should be 'y' button on the XBox controller
+
+  mechanismsBtns[4]->WhileHeld( new Telescope( true ) );
+  mechanismsBtns[5]->WhileHeld( new Telescope( false ) );
+
+  mechanismsBtns[6]->WhileHeld( new Lift( true ) );
+  mechanismsBtns[7]->WhileHeld( new Lift( false ) );
 }
 
 std::shared_ptr<frc::Joystick> OI::getDriverJoystick() {

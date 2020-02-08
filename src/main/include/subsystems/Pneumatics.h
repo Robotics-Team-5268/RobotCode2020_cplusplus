@@ -7,12 +7,19 @@
 #include "RobotMap.h"
 
 class Pneumatics : public frc::Subsystem {
- private:
-  frc::Compressor compressor{PCM_PORT};
-  frc::DoubleSolenoid doubleSolenoid{PCM_PORT, DOUBLESOLENOID_FORWARD_CHANNEL, DOUBLESOLENOID_REVERSE_CHANNEL};
- public:
-  Pneumatics();
-  void Forward();
-  void Reverse();
-  void Off();
+  public:
+    Pneumatics();
+    void ShiftForward();
+    void ShiftReverse();
+    void ShiftOff();
+
+    void StingerForward();
+    void StingerReverse();
+    void StingerOff();
+
+  private:
+    frc::Compressor compressor{PCM_PORT};
+    frc::DoubleSolenoid shiftSolenoid{PCM_PORT, SHIFT_DOUBLESOLENOID_FORWARD_CHANNEL, SHIFT_DOUBLESOLENOID_REVERSE_CHANNEL};
+    frc::DoubleSolenoid stingerSolenoid{PCM_PORT, STINGER_DOUBLESOLENOID_FORWARD_CHANNEL, STINGER_DOUBLESOLENOID_REVERSE_CHANNEL};
+
 };
