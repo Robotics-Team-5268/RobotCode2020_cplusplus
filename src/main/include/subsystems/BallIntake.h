@@ -1,6 +1,7 @@
 #pragma once
 
 #include <frc/commands/PIDSubsystem.h>
+#include <frc/VictorSP.h>
 #include <frc/Encoder.h>
 #include <ctre/Phoenix.h>
 #include "RobotConfig.h"
@@ -25,7 +26,7 @@ public:
     void setUpperSpeed( double aPercent );
 
 private:
-    WPI_VictorSPX lowerSpeedController{BALL_INTAKE_LOWER_SPEED_CONTROLLER};
+    frc::VictorSP lowerSpeedController{BALL_INTAKE_LOWER_SPEED_CONTROLLER};
     WPI_TalonSRX upperSpeedController{BALL_INTAKE_UPPER_SPEED_CONTROLLER};
 
     WPI_TalonSRX flipperSpeedController{BALL_INTAKE_FLIPPER_SPEED_CONTROLLER};
