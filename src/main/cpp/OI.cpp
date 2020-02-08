@@ -13,6 +13,8 @@
 #include "commands/ReadColorSensor.h"
 #include "commands/ShiftGears.h"
 #include "commands/ShootBall.h"
+#include "commands/SpinColor.h"
+#include "commands/SpinRotations.h"
 #include "commands/Telescope.h"
 #if( PNEUMATICS_SUPPORT )
     #include "commands/MovePneumatics.h"
@@ -51,6 +53,11 @@ OI::OI() {
 
   mechanismsBtns[6]->WhileHeld( new Lift( true ) );
   mechanismsBtns[7]->WhileHeld( new Lift( false ) );
+
+  // The game requires 3-5 spins.  Start at 4 to maximimize error tolerance
+  const int desiredRotations = 4;
+  mechanismsBtns[8]->WhenPressed( new SpinRotations( desiredRotations ) );
+  mechanismsBtns[9]->WhenPressed( new SpinColor() );
 }
 
 std::shared_ptr<frc::Joystick> OI::getDriverJoystick() {
