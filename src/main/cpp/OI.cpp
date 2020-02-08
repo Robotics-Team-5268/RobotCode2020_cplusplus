@@ -5,12 +5,14 @@
 #include <frc/DoubleSolenoid.h>
 #include "frc/smartDashboard/SmartDashboard.h"
 #include "Robot.h"
+#include "commands/MoveFlipper.h"
 #include "commands/PickupBall.h"
 #include "commands/ReadColorSensor.h"
 #include "commands/ShootBall.h"
 #if( PNEUMATICS_SUPPORT )
     #include "commands/MovePneumatics.h"
 #endif
+#include "subsystems/BallIntake.h"
 
 OI::OI() {
   driverJoystick.reset(new frc::Joystick(0));
@@ -25,8 +27,12 @@ OI::OI() {
   }
 
   driverBtns[2]->WhileHeld( new ReadColorSensor() ); //This should be 'x' button on the XBox controller
+
   driverBtns[4]->WhileHeld( new PickupBall() );
+
+  driverBtns[5]->WhenPressed( new MoveFlipper( BallIntake::cOpenFlipper ) );
   driverBtns[5]->WhileHeld( new ShootBall() );
+  driverBtns[5]->WhenReleased( new MoveFlipper( BallIntake::cCloseFlipper ) );
 
   #if( PNEUMATICS_SUPPORT )
       mechanismsBtns[2]->WhileHeld(new MovePneumatics(frc::DoubleSolenoid::kForward)); //This should be 'x' button on the XBox controller
