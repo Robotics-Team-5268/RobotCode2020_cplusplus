@@ -1,17 +1,11 @@
-ARM
- - Talon SRX, Bosch Motor, Bosch Encoder.
- - Extend to 90 degrees
+Remaining Work:
 
-Drive
- - 4 Falcon500s
+Properly Implement SpinRotations Command
+Properly Implement SpinColor command
+  - Need to get color from FMS
+  
+Make decision on autonomous
 
-Winches
- - Tellescoping - 1 motor - Victor SPXs
- - Pullup - 2 motors - Victor SPX
+Set all CAN/PWM Ids based on final robot tuning
 
-Ball intake
- - 3 or 4 Talon SRXs
-
-Color Wheel
- - Rev Robotics Color Sensor V3
- - Talon SRX
+Reconfigure button/command mappings
