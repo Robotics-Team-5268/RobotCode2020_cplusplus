@@ -5,6 +5,7 @@
 #include <frc/DoubleSolenoid.h>
 #include "frc/smartDashboard/SmartDashboard.h"
 #include "Robot.h"
+#include "commands/MoveArm.h"
 #include "commands/MoveFlipper.h"
 #include "commands/PickupBall.h"
 #include "commands/ReadColorSensor.h"
@@ -12,7 +13,9 @@
 #if( PNEUMATICS_SUPPORT )
     #include "commands/MovePneumatics.h"
 #endif
+
 #include "subsystems/BallIntake.h"
+#include "subsystems/LiftArm.h"
 
 OI::OI() {
   driverJoystick.reset(new frc::Joystick(0));
@@ -33,6 +36,8 @@ OI::OI() {
   driverBtns[5]->WhenPressed( new MoveFlipper( BallIntake::cOpenFlipper ) );
   driverBtns[5]->WhileHeld( new ShootBall() );
   driverBtns[5]->WhenReleased( new MoveFlipper( BallIntake::cCloseFlipper ) );
+
+  driverBtns[6]->WhenPressed( new MoveArm( LiftArm::cRaiseArm ) );
 
   #if( PNEUMATICS_SUPPORT )
       mechanismsBtns[2]->WhileHeld(new MovePneumatics(frc::DoubleSolenoid::kForward)); //This should be 'x' button on the XBox controller

@@ -9,6 +9,7 @@
 #include "subsystems/BallIntake.h"
 #include "subsystems/ColorWheel.h"
 #include "subsystems/Drive.h"
+#include "subsystems/LiftArm.h"
 #if( PNEUMATICS_SUPPORT )
     #include "subsystems/Pneumatics.h"
 #endif
@@ -23,6 +24,7 @@ class CommandBase : public frc::CommandGroup {
   static std::unique_ptr<BallIntake> ballIntake;
   static std::unique_ptr<ColorWheel> colorWheel;
   static std::unique_ptr<Drive> drive;
+  static std::unique_ptr<LiftArm> liftArm;
   #if( PNEUMATICS_SUPPORT )
       static std::unique_ptr<Pneumatics> pneumatics;
   #endif
