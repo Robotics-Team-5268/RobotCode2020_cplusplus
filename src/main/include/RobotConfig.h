@@ -1,5 +1,5 @@
 #pragma once
 
-#define PNEUMATICS_SUPPORT FALSE
+#define PNEUMATICS_SUPPORT TRUE
 
 #define GYRO_SUPPORT FALSE
