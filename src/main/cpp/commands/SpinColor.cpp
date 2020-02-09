@@ -35,6 +35,9 @@ void SpinColor::Execute() {
     case ColorWheel::RED:
         colorString = "Red";
         break;
+
+    default:
+        break;
     }
 
     frc::SmartDashboard::PutNumber("Red", colorReading.color.red);
