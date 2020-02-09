@@ -4,7 +4,7 @@
 
 class Lift : public CommandBase {
   public:
-    Lift( bool raise );
+    Lift( bool aRaise );
     void Initialize() override;
     void Execute() override;
     bool IsFinished() override;

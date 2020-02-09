@@ -5,5 +5,5 @@
 
 class Autonomous : public CommandBase {
  public:
-  Autonomous(int selection);
+  Autonomous(int aSelection);
 };

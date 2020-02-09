@@ -2,9 +2,9 @@
 
 #include "CommandBase.h"
 
-MoveArm::MoveArm(double setPoint) : CommandBase("MoveArm") {
+MoveArm::MoveArm(double aSetPoint) : CommandBase("MoveArm") {
     Requires(CommandBase::liftArm.get());
-    mSetpoint = setPoint;
+    mSetpoint = aSetPoint;
 }
 
 void MoveArm::Initialize()

@@ -1,8 +1,8 @@
 #include "commands/Lift.h"
 
-Lift::Lift( bool raise )
+Lift::Lift( bool aRaise )
     : CommandBase("Lift")
-    , mRaise( raise )    
+    , mRaise( aRaise )    
 {
     Requires( winches.get() );
 }

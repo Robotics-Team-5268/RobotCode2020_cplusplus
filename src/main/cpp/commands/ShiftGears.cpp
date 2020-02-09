@@ -3,11 +3,11 @@
 #include "RobotConfig.h"
 #include "CommandBase.h"
 
-ShiftGears::ShiftGears(frc::DoubleSolenoid::Value v) : CommandBase("ShiftGears") {
+ShiftGears::ShiftGears(frc::DoubleSolenoid::Value aValue) : CommandBase("ShiftGears") {
     #if( PNEUMATICS_SUPPORT )
         Requires(CommandBase::pneumatics.get());
     #endif
-    value = v;
+    mValue = aValue;
 }
 
 void ShiftGears::Initialize()
@@ -18,9 +18,9 @@ void ShiftGears::Initialize()
 
 void ShiftGears::Execute() {
     #if( PNEUMATICS_SUPPORT )
-        if (value == frc::DoubleSolenoid::kForward) {
+        if (mValue == frc::DoubleSolenoid::kForward) {
             CommandBase::pneumatics->ShiftForward();
-        } else if (value == frc::DoubleSolenoid::kReverse){
+        } else if (mValue == frc::DoubleSolenoid::kReverse){
             CommandBase::pneumatics->ShiftReverse();
         } else {
             CommandBase::pneumatics->ShiftOff();

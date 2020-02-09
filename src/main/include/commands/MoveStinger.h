@@ -6,12 +6,12 @@
 
 class MoveStinger : public CommandBase {
  public:
-  MoveStinger(frc::DoubleSolenoid::Value v);
+  MoveStinger(frc::DoubleSolenoid::Value aValue);
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
   void End() override;
   void Interrupted() override;
  private:
-  frc::DoubleSolenoid::Value value;
+  frc::DoubleSolenoid::Value mValue;
 };

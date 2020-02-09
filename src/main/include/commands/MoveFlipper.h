@@ -4,7 +4,7 @@
 
 class MoveFlipper : public CommandBase {
    public:
-      MoveFlipper(double setPoint);
+      MoveFlipper(double aSetPoint);
       void Initialize() override;
       bool IsFinished() override;
 

@@ -1,8 +1,8 @@
 #include "commands/Telescope.h"
 
-Telescope::Telescope( bool extend )
+Telescope::Telescope( bool aExtend )
     : CommandBase("Telescope")
-    , mExtend( extend )    
+    , mExtend( aExtend )    
 {
     Requires( winches.get() );
 }

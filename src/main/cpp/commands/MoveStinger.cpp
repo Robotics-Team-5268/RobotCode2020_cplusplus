@@ -3,11 +3,11 @@
 #include "RobotConfig.h"
 #include "CommandBase.h"
 
-MoveStinger::MoveStinger(frc::DoubleSolenoid::Value v) : CommandBase("MoveStinger") {
+MoveStinger::MoveStinger(frc::DoubleSolenoid::Value aValue) : CommandBase("MoveStinger") {
     #if( PNEUMATICS_SUPPORT )
         Requires(CommandBase::pneumatics.get());
     #endif
-    value = v;
+    mValue = aValue;
 }
 
 void MoveStinger::Initialize()
@@ -18,9 +18,9 @@ void MoveStinger::Initialize()
 
 void MoveStinger::Execute() {
     #if( PNEUMATICS_SUPPORT )
-        if (value == frc::DoubleSolenoid::kForward) {
+        if (mValue == frc::DoubleSolenoid::kForward) {
             CommandBase::pneumatics->StingerForward();
-        } else if (value == frc::DoubleSolenoid::kReverse){
+        } else if (mValue == frc::DoubleSolenoid::kReverse){
             CommandBase::pneumatics->StingerReverse();
         } else {
             CommandBase::pneumatics->StingerOff();

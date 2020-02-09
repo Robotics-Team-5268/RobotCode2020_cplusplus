@@ -4,7 +4,7 @@
 
 class Telescope : public CommandBase {
   public:
-    Telescope( bool extend );
+    Telescope( bool aExtend );
     void Initialize() override;
     void Execute() override;
     bool IsFinished() override;

@@ -2,9 +2,9 @@
 
 #include "CommandBase.h"
 
-MoveFlipper::MoveFlipper(double setPoint) : CommandBase("MoveFlipper") {
+MoveFlipper::MoveFlipper(double aSetPoint) : CommandBase("MoveFlipper") {
     Requires(CommandBase::ballIntake.get());
-    mSetpoint = setPoint;
+    mSetpoint = aSetPoint;
 }
 
 void MoveFlipper::Initialize()
