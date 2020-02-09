@@ -11,7 +11,7 @@ Winches::~Winches()
 
 void Winches::lift( double aPercent )
 {
-    pullupSpeedController1.Set( aPercent );    
+    pullupSpeedControllGroup.Set( aPercent );
 }
 
 void Winches::telescope( double aPercent )
