@@ -91,5 +91,5 @@ void Drive::SetVelocity(float aLeft, float aRight) {
 	} else {
 		rightSpeed = mVelocityToCommandSlope[3]*(rightSpeed + mVelocityToCommandIntercept[3]);
 	}
-	setMotors(left, rightSpeed);
+	setMotors(leftSpeed, rightSpeed);
 }
