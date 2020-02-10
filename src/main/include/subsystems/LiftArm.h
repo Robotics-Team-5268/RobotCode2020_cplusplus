@@ -18,9 +18,9 @@ public:
 
     double ReturnPIDInput() override;
 
-    void UsePIDOutput(double output) override;
+    void UsePIDOutput(double aOutput) override;
 
 private:
-    WPI_TalonSRX speedController{LIFT_ARM_SPEED_CONTROLLER};
-    frc::Encoder encoder{ LIFT_ARM_ENCODER_CHANNEL_A, LIFT_ARM_ENCODER_CHANNEL_B };
+    WPI_TalonSRX mSpeedController{LIFT_ARM_SPEED_CONTROLLER};
+    frc::Encoder mEncoder{ LIFT_ARM_ENCODER_CHANNEL_A, LIFT_ARM_ENCODER_CHANNEL_B };
 };

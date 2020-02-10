@@ -5,7 +5,7 @@ BallIntake::BallIntake() : PIDSubsystem("BallIntake", 7.0, 0.0, 8.0)
     // Value taken from REV-11-1271 datasheet
     const double pulsesPerRevolution = 8192.0;
     // Set the distance per pulse to work in degrees
-    flipperEncoder.SetDistancePerPulse(360.0 / pulsesPerRevolution );
+    mFlipperEncoder.SetDistancePerPulse(360.0 / pulsesPerRevolution );
     SetAbsoluteTolerance(0.005);
     GetPIDController()->SetContinuous(false);
 }
@@ -22,20 +22,20 @@ void BallIntake::InitDefaultCommand()
 
 double BallIntake::ReturnPIDInput()
 {
-    return flipperEncoder.Get();
+    return mFlipperEncoder.Get();
 }
 
-void BallIntake::UsePIDOutput(double output)
+void BallIntake::UsePIDOutput(double aOutput)
 {
-    flipperSpeedController.PIDWrite(output);
+    mFlipperSpeedController.PIDWrite(aOutput);
 }
 
 void BallIntake::setLowerSpeed( double aPercent )
 {
-    lowerSpeedController.Set( aPercent );
+    mLowerSpeedController.Set( aPercent );
 }
 
 void BallIntake::setUpperSpeed( double aPercent )
 {
-    upperSpeedController.Set( aPercent );
+    mUpperSpeedController.Set( aPercent );
 }

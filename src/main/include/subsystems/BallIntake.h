@@ -20,15 +20,15 @@ public:
 
     double ReturnPIDInput() override;
 
-    void UsePIDOutput(double output) override;
+    void UsePIDOutput(double aOutput) override;
 
     void setLowerSpeed( double aPercent );
     void setUpperSpeed( double aPercent );
 
 private:
-    frc::VictorSP lowerSpeedController{BALL_INTAKE_LOWER_SPEED_CONTROLLER};
-    WPI_TalonSRX upperSpeedController{BALL_INTAKE_UPPER_SPEED_CONTROLLER};
+    frc::VictorSP mLowerSpeedController{BALL_INTAKE_LOWER_SPEED_CONTROLLER};
+    WPI_TalonSRX mUpperSpeedController{BALL_INTAKE_UPPER_SPEED_CONTROLLER};
 
-    WPI_TalonSRX flipperSpeedController{BALL_INTAKE_FLIPPER_SPEED_CONTROLLER};
-    frc::Encoder flipperEncoder{ FLIPPER_ENCODER_CHANNEL_A, FLIPPER_ENCODER_CHANNEL_B };
+    WPI_TalonSRX mFlipperSpeedController{BALL_INTAKE_FLIPPER_SPEED_CONTROLLER};
+    frc::Encoder mFlipperEncoder{ FLIPPER_ENCODER_CHANNEL_A, FLIPPER_ENCODER_CHANNEL_B };
 };

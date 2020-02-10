@@ -12,31 +12,32 @@
 
 class Drive : public frc::Subsystem {
  private:
-	WPI_TalonFX speedControllerFL{DRIVE_SPEED_CONTROLLER_FL_CHANNEL};
-	WPI_TalonFX speedControllerBL{DRIVE_SPEED_CONTROLLER_BL_CHANNEL};
-	frc::SpeedControllerGroup leftSC{speedControllerFL, speedControllerBL};
+	WPI_TalonFX mSpeedControllerFL{DRIVE_SPEED_CONTROLLER_FL_CHANNEL};
+	WPI_TalonFX mSpeedControllerBL{DRIVE_SPEED_CONTROLLER_BL_CHANNEL};
+	frc::SpeedControllerGroup mLeftSC{mSpeedControllerFL, mSpeedControllerBL};
 
-	WPI_TalonFX speedControllerFR{DRIVE_SPEED_CONTROLLER_FR_CHANNEL};
-	WPI_TalonFX speedControllerBR{DRIVE_SPEED_CONTROLLER_BR_CHANNEL};
-	frc::SpeedControllerGroup rightSC{speedControllerFR, speedControllerBR};
+	WPI_TalonFX mSpeedControllerFR{DRIVE_SPEED_CONTROLLER_FR_CHANNEL};
+	WPI_TalonFX mSpeedControllerBR{DRIVE_SPEED_CONTROLLER_BR_CHANNEL};
+	frc::SpeedControllerGroup mRightSC{mSpeedControllerFR, mSpeedControllerBR};
 
-	frc::DifferentialDrive diffDrive{leftSC, rightSC};
-	float oldLeftSpeed, oldRightSpeed;
+	frc::DifferentialDrive mDiffDrive{mLeftSC, mRightSC};
+	float mOldLeftSpeed;
+	float mOldRightSpeed;
 	const float MAX_CHANGE = .05;
 	const float MAX_SPEED = 3000;//used to be 3000
-	float velocityToCommandSlope[4];
-	float velocityToCommandIntercept[4];
+	float mVelocityToCommandSlope[4];
+	float mVelocityToCommandIntercept[4];
 
     #if( GYRO_SUPPORT )
-	    frc::AnalogGyro gyro{GYRO_ANALOG_PORT};
+	    frc::AnalogGyro mGyro{GYRO_ANALOG_PORT};
     #endif
 
     //std::ofstream fout;
  public:
 	Drive();
 	void InitDefaultCommand() override;
-	virtual void setMotors(float leftSpeed, float rightSpeed);
-	virtual void safetyOff() {diffDrive.SetSafetyEnabled(false);}
+	virtual void setMotors(float aLeftSpeed, float aRightSpeed);
+	virtual void safetyOff() {mDiffDrive.SetSafetyEnabled(false);}
 	virtual void takeInput();
 	#if( GYRO_SUPPORT )
 	    frc::AnalogGyro* getGyro();
@@ -45,5 +46,5 @@ class Drive : public frc::Subsystem {
 	    void resetGyro();
 	    void calibrateGyro();
 	#endif
-	void SetVelocity(float left, float right);
+	void SetVelocity(float aLeft, float aRight);
 };

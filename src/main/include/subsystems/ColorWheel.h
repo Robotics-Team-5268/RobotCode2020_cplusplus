@@ -44,6 +44,6 @@ class ColorWheel : public frc::Subsystem {
     private:
         rev::ColorSensorV3 mColorSensor;
         rev::ColorMatch mColorMatcher;
-        WPI_TalonSRX speedController{COLOR_WHEEL_SPEED_CONTROLLER};
+        WPI_TalonSRX mSpeedController{COLOR_WHEEL_SPEED_CONTROLLER};
 
 };

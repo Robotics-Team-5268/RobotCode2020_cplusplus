@@ -9,20 +9,20 @@
 #define SCBR_INVERTED false
 
 Drive::Drive() : Subsystem("Drive") {
-	oldLeftSpeed = 0.0;
-	oldRightSpeed = 0.0;
-	velocityToCommandIntercept[0] = -316.89;
-	velocityToCommandIntercept[1] = -378.00;
-	velocityToCommandIntercept[2] = -364.78;
-	velocityToCommandIntercept[3] = -331.27;
-	velocityToCommandSlope[0] = 1/3493.57;
-	velocityToCommandSlope[1] = 1/3493.90;
-	velocityToCommandSlope[2] = 1/3386.53;
-	velocityToCommandSlope[3] = 1/3744.83;
-	speedControllerFL.SetInverted(SCFL_INVERTED);
-	speedControllerBL.SetInverted(SCBL_INVERTED);
-	speedControllerFR.SetInverted(SCFR_INVERTED);
-	speedControllerBR.SetInverted(SCBR_INVERTED);
+	mOldLeftSpeed = 0.0;
+	mOldRightSpeed = 0.0;
+	mVelocityToCommandIntercept[0] = -316.89;
+	mVelocityToCommandIntercept[1] = -378.00;
+	mVelocityToCommandIntercept[2] = -364.78;
+	mVelocityToCommandIntercept[3] = -331.27;
+	mVelocityToCommandSlope[0] = 1/3493.57;
+	mVelocityToCommandSlope[1] = 1/3493.90;
+	mVelocityToCommandSlope[2] = 1/3386.53;
+	mVelocityToCommandSlope[3] = 1/3744.83;
+	mSpeedControllerFL.SetInverted(SCFL_INVERTED);
+	mSpeedControllerBL.SetInverted(SCBL_INVERTED);
+	mSpeedControllerFR.SetInverted(SCFR_INVERTED);
+	mSpeedControllerBR.SetInverted(SCBR_INVERTED);
 }
 
 void Drive::InitDefaultCommand() {
@@ -33,10 +33,10 @@ void Drive::takeInput() {
 	float leftSpeed = -CommandBase::oi->getDriverJoystick()->GetRawAxis(1);
 	float rightSpeed = -CommandBase::oi->getDriverJoystick()->GetRawAxis(5);
 
-	if (leftSpeed > oldLeftSpeed + MAX_CHANGE) leftSpeed = oldLeftSpeed + MAX_CHANGE;
-	else if (leftSpeed < oldLeftSpeed - MAX_CHANGE) leftSpeed = oldLeftSpeed - MAX_CHANGE;
-	if (rightSpeed > oldRightSpeed + MAX_CHANGE) rightSpeed = oldRightSpeed + MAX_CHANGE;
-	else if (rightSpeed < oldRightSpeed - MAX_CHANGE) rightSpeed = oldRightSpeed - MAX_CHANGE;
+	if (leftSpeed > mOldLeftSpeed + MAX_CHANGE) leftSpeed = mOldLeftSpeed + MAX_CHANGE;
+	else if (leftSpeed < mOldLeftSpeed - MAX_CHANGE) leftSpeed = mOldLeftSpeed - MAX_CHANGE;
+	if (rightSpeed > mOldRightSpeed + MAX_CHANGE) rightSpeed = mOldRightSpeed + MAX_CHANGE;
+	else if (rightSpeed < mOldRightSpeed - MAX_CHANGE) rightSpeed = mOldRightSpeed - MAX_CHANGE;
 
     if (leftSpeed >= .9 && rightSpeed >= .9) {
 	  setMotors(1, 1);
@@ -44,52 +44,52 @@ void Drive::takeInput() {
 	  setMotors(leftSpeed, rightSpeed);
     }
 
-    oldLeftSpeed = leftSpeed;
-	oldRightSpeed = rightSpeed;
+	mOldLeftSpeed = leftSpeed;
+	mOldRightSpeed = rightSpeed;
 
 
 	//fout << getGyroRate() << '\n';
 }
 
-void Drive::setMotors(float leftSpeed, float rightSpeed) {
-	diffDrive.TankDrive(leftSpeed, rightSpeed, false);
+void Drive::setMotors(float aLeftSpeed, float aRightSpeed) {
+	mDiffDrive.TankDrive(aLeftSpeed, aRightSpeed, false);
 
-	frc::SmartDashboard::PutNumber("Speed Controller FL", speedControllerFL.Get());
-	frc::SmartDashboard::PutNumber("Speed Controller FR", speedControllerFR.Get());
-	frc::SmartDashboard::PutNumber("Speed Controller BL", speedControllerBL.Get());
-	frc::SmartDashboard::PutNumber("Speed Controller BR", speedControllerBR.Get());
+	frc::SmartDashboard::PutNumber("Speed Controller FL", mSpeedControllerFL.Get());
+	frc::SmartDashboard::PutNumber("Speed Controller FR", mSpeedControllerFR.Get());
+	frc::SmartDashboard::PutNumber("Speed Controller BL", mSpeedControllerBL.Get());
+	frc::SmartDashboard::PutNumber("Speed Controller BR", mSpeedControllerBR.Get());
 }
 
 #if( GYRO_SUPPORT )
 	frc::AnalogGyro* Drive::getGyro() {
-		return &gyro;
+		return &mGyro;
 	}
 	float Drive::getGyroAngle() {
-		return gyro.GetAngle();
+		return mGyro.GetAngle();
 	}
 	float Drive::getGyroRate() {
-		return gyro.GetRate();
+		return mGyro.GetRate();
 	}
 	void Drive::resetGyro() {
-		gyro.Reset();
+		mGyro.Reset();
 	}
 	void Drive::calibrateGyro() {
-		gyro.Calibrate();
+		mGyro.Calibrate();
 	}
 #endif
 
-void Drive::SetVelocity(float left, float right) {
-	float leftSpeed = left * MAX_SPEED;
-	float rightSpeed = right * MAX_SPEED;
+void Drive::SetVelocity(float aLeft, float aRight) {
+	float leftSpeed = aLeft * MAX_SPEED;
+	float rightSpeed = aRight * MAX_SPEED;
 	if (leftSpeed < 0) {
-		leftSpeed = velocityToCommandSlope[0]*(leftSpeed + velocityToCommandIntercept[0]);
+		leftSpeed = mVelocityToCommandSlope[0]*(leftSpeed + mVelocityToCommandIntercept[0]);
 	} else {
-		leftSpeed = velocityToCommandSlope[2]*(leftSpeed + velocityToCommandIntercept[2]);
+		leftSpeed = mVelocityToCommandSlope[2]*(leftSpeed + mVelocityToCommandIntercept[2]);
 	}
 	if (rightSpeed < 0) {
-		rightSpeed = velocityToCommandSlope[1]*(rightSpeed + velocityToCommandIntercept[1]);
+		rightSpeed = mVelocityToCommandSlope[1]*(rightSpeed + mVelocityToCommandIntercept[1]);
 	} else {
-		rightSpeed = velocityToCommandSlope[3]*(rightSpeed + velocityToCommandIntercept[3]);
+		rightSpeed = mVelocityToCommandSlope[3]*(rightSpeed + mVelocityToCommandIntercept[3]);
 	}
 	setMotors(left, rightSpeed);
 }

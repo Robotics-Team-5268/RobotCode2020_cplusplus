@@ -15,9 +15,9 @@ public:
     void telescope( double aPercent );
 
 private:
-    WPI_VictorSPX telescopeSpeedController{WINCH_TELESCOPE_SPEED_CONTROLLER};
+    WPI_VictorSPX mTelescopeSpeedController{WINCH_TELESCOPE_SPEED_CONTROLLER};
 
-    WPI_VictorSPX pullupSpeedController1{WINCH_PULLUP_SPEED_CONTROLLER_1};
-    WPI_VictorSPX pullupSpeedController2{WINCH_PULLUP_SPEED_CONTROLLER_2};
-    frc::SpeedControllerGroup pullupSpeedControllGroup{pullupSpeedController1, pullupSpeedController2};
+    WPI_VictorSPX mPullupSpeedController1{WINCH_PULLUP_SPEED_CONTROLLER_1};
+    WPI_VictorSPX mPullupSpeedController2{WINCH_PULLUP_SPEED_CONTROLLER_2};
+    frc::SpeedControllerGroup mPullupSpeedControllGroup{mPullupSpeedController1, mPullupSpeedController2};
 };

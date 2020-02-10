@@ -29,16 +29,17 @@ public:
 	bool getButtonA();
 	bool getButtonB();
   double getPot();
-	void display(double batt);
-	void display(std::string str);
+	void display(double aBatteryVoltage);
+	void display(const std::string& aString);
 
 private:
-	void _display( byte charz[4]);
+	void _display( byte aCharz[4]);
 
-	frc::I2C i2c;
-	frc::DigitalInput buttonA, buttonB;
-	frc::AnalogInput pot;
+	frc::I2C mI2c;
+	frc::DigitalInput mButtonA;
+	frc::DigitalInput mButtonB;
+	frc::AnalogInput mPotentiometer;
 
-	byte charreg[37][2];
-	byte charmap[256];
+	byte mCharreg[37][2];
+	byte mCharmap[256];
 };
