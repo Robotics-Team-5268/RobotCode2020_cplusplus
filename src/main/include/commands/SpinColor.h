@@ -12,6 +12,6 @@ class SpinColor : public CommandBase {
   void End() override;
   void Interrupted() override;
  private:
-    ColorWheel::MatchedColor mDesiredColor;
-
+    ColorWheel::MatchedColor mFmsColor; //!< Field management system color
+    bool mColorMatched;
 };
