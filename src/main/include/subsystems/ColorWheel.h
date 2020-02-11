@@ -41,6 +41,8 @@ class ColorWheel : public frc::Subsystem {
 
         MatchedColor getMatchedColor();
 
+        void spin( double aPercentSpeed );
+
     private:
         rev::ColorSensorV3 mColorSensor;
         rev::ColorMatch mColorMatcher;

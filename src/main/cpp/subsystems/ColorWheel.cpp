@@ -47,3 +47,8 @@ ColorWheel::ColorReading ColorWheel::readColorSensor()
     return reading;
 
 }
+
+void ColorWheel::spin( double aPercentSpeed )
+{
+    mSpeedController.Set( aPercentSpeed );
+}
