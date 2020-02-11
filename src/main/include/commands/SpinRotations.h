@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CommandBase.h"
+#include <subsystems/ColorWheel.h>
 
 class SpinRotations : public CommandBase {
  public:
@@ -15,4 +16,6 @@ class SpinRotations : public CommandBase {
   void Interrupted() override;
  private:
     int mNumRotations;
+    ColorWheel::MatchedColor mLastMatchedColor;
+    int mColorChangeCount;
 };
