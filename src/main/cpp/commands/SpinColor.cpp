@@ -13,6 +13,8 @@ SpinColor::SpinColor()
 
 void SpinColor::Initialize()
 {
+    mFmsColor = ColorWheel::NO_MATCH;
+    mColorMatched = false;
     std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
     if( !gameData.empty() )
     {
