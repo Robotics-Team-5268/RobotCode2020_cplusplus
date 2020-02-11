@@ -1,20 +1,27 @@
 #include "commands/DriveStraightAutonomous.h"
 
-
-void DriveStraightAutonomous::End(){
+DriveStraightAutonomous::DriveStraightAutonomous() : CommandBase("DriveStraightDistance")
+{
+    Requires( drive.get() );
 }
 
-void DriveStraightAutonomous::Initialize(){
+void DriveStraightAutonomous::End()
+{
+    drive->setMotors( 0.0, 0.0 );
 }
 
-void DriveStraightAutonomous::Execute(){
-
+void DriveStraightAutonomous::Initialize()
+{
+    // Run the command for 2 seconds
+    SetTimeout( 2.0 );
 }
 
-bool DriveStraightAutonomous::IsFinished(){
+void DriveStraightAutonomous::Execute()
+{
+    drive->setMotors( 0.1, 0.1 );
+}
+
+bool DriveStraightAutonomous::IsFinished()
+{
     return true;
-}
-
-DriveStraightAutonomous::DriveStraightAutonomous() : CommandBase("DriveStraightDistance") {
-    mStartTime = 0;
 }

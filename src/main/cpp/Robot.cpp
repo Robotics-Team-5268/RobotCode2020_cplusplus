@@ -1,6 +1,7 @@
 #include "Robot.h"
 
 #include "RobotConfig.h"
+#include "commands/DriveStraightAutonomous.h"
 #include "subsystems/Drive.h"
 #include "CommandBase.h"
 #include "Vision.hpp"
@@ -9,7 +10,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/Relay.h>
 
-std::unique_ptr<Autonomous> Robot::autonomousCommand;
+std::unique_ptr<DriveStraightAutonomous> Robot::autonomousCommand;
 AutonomousChooser Robot::AutoChooser;
 
 static std::unique_ptr<frc::Relay> cameraRelay;
@@ -35,8 +36,9 @@ void Robot::DisabledInit() {}
 
 void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
-void Robot::AutonomousInit() {
-	autonomousCommand.reset(new Autonomous(AutoChooser.AutonomousSelection()));
+void Robot::AutonomousInit()
+{
+	autonomousCommand.reset( new DriveStraightAutonomous() );
 	autonomousCommand->Start();
 }
 

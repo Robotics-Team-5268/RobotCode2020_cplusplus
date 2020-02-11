@@ -3,12 +3,12 @@
 #include "CommandBase.h"
 
 class DriveStraightAutonomous : public CommandBase {
-private:
-    double mStartTime;
 public:
+    DriveStraightAutonomous();
+
+    virtual ~DriveStraightAutonomous() {};
     virtual void End();
     virtual void Initialize();
     virtual void Execute();
     virtual bool IsFinished();
-    DriveStraightAutonomous();
 };
