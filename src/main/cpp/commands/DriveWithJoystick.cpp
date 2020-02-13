@@ -8,9 +8,8 @@ void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
   drive->setMotors(
-    -CommandBase::oi->getDriverJoystick()->GetRawAxis(1) ,
-	  -CommandBase::oi->getDriverJoystick()->GetRawAxis(5)
-    // 0.0,0.0
+    -CommandBase::oi->getDriverJoystick()->GetRawAxis(1) * 0.1,
+	  -CommandBase::oi->getDriverJoystick()->GetRawAxis(5) * 0.1
   );
 }
 
