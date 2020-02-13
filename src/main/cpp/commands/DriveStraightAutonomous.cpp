@@ -18,7 +18,7 @@ void DriveStraightAutonomous::Initialize()
 
 void DriveStraightAutonomous::Execute()
 {
-    drive->setMotors( 0.1, 0.1 );
+    // drive->setMotors( 0.1, 0.1 );
 }
 
 bool DriveStraightAutonomous::IsFinished()
