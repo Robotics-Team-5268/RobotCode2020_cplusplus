@@ -30,33 +30,36 @@ OI::OI() {
     mechanismsBtns.push_back(new frc::JoystickButton(mechanismsJoystick.get(), i));
   }
 
-  driverBtns[2]->WhileHeld( new ReadColorSensor() ); //This should be 'x' button on the XBox controller
+  driverBtns[4]->WhenPressed(new ShiftGears(frc::DoubleSolenoid::kReverse)); // LB, shift down
+  driverBtns[5]->WhenPressed(new ShiftGears(frc::DoubleSolenoid::kForward)); // RB, shift up
 
-  driverBtns[4]->WhileHeld( new PickupBall() );
+  mechanismsBtns[0]->WhileHeld( new Lift( true ) );
+  //mechanismsBtns[7]->WhileHeld( new Lift( false ) ); // Not currently used.  Will ratchet down after round
 
-  driverBtns[5]->WhenPressed( new MoveFlipper( BallIntake::cOpenFlipper ) );
-  driverBtns[5]->WhileHeld( new ShootBall() );
-  driverBtns[5]->WhenReleased( new MoveFlipper( BallIntake::cCloseFlipper ) );
+  mechanismsBtns[1]->WhileHeld( new Telescope( true ) ); // B
+  mechanismsBtns[3]->WhileHeld( new Telescope( false ) ); // Y
 
-  driverBtns[6]->WhenPressed( new MoveArm( LiftArm::cRaiseArm ) );
+  mechanismsBtns[2]->WhenPressed( new MoveArm( LiftArm::cRaiseArm ) ); // X
 
-  driverBtns[8]->WhenPressed(new ShiftGears(frc::DoubleSolenoid::kForward));
-  driverBtns[9]->WhenPressed(new ShiftGears(frc::DoubleSolenoid::kReverse));
+  // RB
+  mechanismsBtns[4]->WhenPressed( new MoveFlipper( BallIntake::cOpenFlipper ) );
+  mechanismsBtns[4]->WhileHeld( new ShootBall() );
+  mechanismsBtns[4]->WhenReleased( new MoveFlipper( BallIntake::cCloseFlipper ) );
+
+  // LB
+  mechanismsBtns[5]->WhileHeld( new PickupBall() );
 
 
-  mechanismsBtns[2]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kForward)); //This should be 'x' button on the XBox controller
-  mechanismsBtns[3]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kReverse)); //This should be 'y' button on the XBox controller
+  // mechanismsBtns[2]->WhileHeld( new ReadColorSensor() ); // Test command not currently used
 
-  mechanismsBtns[4]->WhileHeld( new Telescope( true ) );
-  mechanismsBtns[5]->WhileHeld( new Telescope( false ) );
-
-  mechanismsBtns[6]->WhileHeld( new Lift( true ) );
-  mechanismsBtns[7]->WhileHeld( new Lift( false ) );
+  // R3
+  mechanismsBtns[9]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kForward));
+  // mechanismsBtns[3]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kReverse)); // Not currently retracting the stinger
 
   // The game requires 3-5 spins.  Start at 4 to maximimize error tolerance
   const int desiredRotations = 4;
-  mechanismsBtns[8]->WhenPressed( new SpinRotations( desiredRotations ) );
-  mechanismsBtns[9]->WhenPressed( new SpinColor() );
+  mechanismsBtns[7]->WhenPressed( new SpinRotations( desiredRotations ) ); // RT - need to fix
+  mechanismsBtns[8]->WhenPressed( new SpinColor() ); // LT - need to fix
 }
 
 std::shared_ptr<frc::Joystick> OI::getDriverJoystick() {
