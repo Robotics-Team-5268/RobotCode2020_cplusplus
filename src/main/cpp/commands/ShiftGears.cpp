@@ -1,12 +1,9 @@
 #include "commands/ShiftGears.h"
 
-#include "RobotConfig.h"
 #include "CommandBase.h"
 
 ShiftGears::ShiftGears(frc::DoubleSolenoid::Value aValue) : CommandBase("ShiftGears") {
-    #if( PNEUMATICS_SUPPORT )
-        Requires(CommandBase::pneumatics.get());
-    #endif
+    Requires(CommandBase::pneumatics.get());
     mValue = aValue;
 }
 
@@ -17,15 +14,13 @@ void ShiftGears::Initialize()
 }
 
 void ShiftGears::Execute() {
-    #if( PNEUMATICS_SUPPORT )
-        if (mValue == frc::DoubleSolenoid::kForward) {
-            CommandBase::pneumatics->ShiftForward();
-        } else if (mValue == frc::DoubleSolenoid::kReverse){
-            CommandBase::pneumatics->ShiftReverse();
-        } else {
-            CommandBase::pneumatics->ShiftOff();
-        }
-    #endif
+    if (mValue == frc::DoubleSolenoid::kForward) {
+        CommandBase::pneumatics->ShiftForward();
+    } else if (mValue == frc::DoubleSolenoid::kReverse){
+        CommandBase::pneumatics->ShiftReverse();
+    } else {
+        CommandBase::pneumatics->ShiftOff();
+    }
 }
 
 bool ShiftGears::IsFinished() { 
@@ -34,9 +29,7 @@ bool ShiftGears::IsFinished() {
 
 void ShiftGears::End()
 {
-    #if( PNEUMATICS_SUPPORT )
-        CommandBase::pneumatics->ShiftOff();
-    #endif
+    CommandBase::pneumatics->ShiftOff();
 }
 
 void ShiftGears::Interrupted() {}

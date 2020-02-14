@@ -1,6 +1,5 @@
 #include "OI.h"
 
-#include "RobotConfig.h"
 #include <frc/DoubleSolenoid.h>
 #include "frc/smartDashboard/SmartDashboard.h"
 #include "Robot.h"
@@ -15,9 +14,6 @@
 #include "commands/SpinColor.h"
 #include "commands/SpinRotations.h"
 #include "commands/Telescope.h"
-#if( PNEUMATICS_SUPPORT )
-    #include "commands/MovePneumatics.h"
-#endif
 
 #include "subsystems/BallIntake.h"
 #include "subsystems/LiftArm.h"

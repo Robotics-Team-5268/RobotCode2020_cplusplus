@@ -1,12 +1,9 @@
 #include "commands/MoveStinger.h"
 
-#include "RobotConfig.h"
 #include "CommandBase.h"
 
 MoveStinger::MoveStinger(frc::DoubleSolenoid::Value aValue) : CommandBase("MoveStinger") {
-    #if( PNEUMATICS_SUPPORT )
-        Requires(CommandBase::pneumatics.get());
-    #endif
+    Requires(CommandBase::pneumatics.get());
     mValue = aValue;
 }
 
@@ -17,15 +14,13 @@ void MoveStinger::Initialize()
 }
 
 void MoveStinger::Execute() {
-    #if( PNEUMATICS_SUPPORT )
-        if (mValue == frc::DoubleSolenoid::kForward) {
-            CommandBase::pneumatics->StingerForward();
-        } else if (mValue == frc::DoubleSolenoid::kReverse){
-            CommandBase::pneumatics->StingerReverse();
-        } else {
-            CommandBase::pneumatics->StingerOff();
-        }
-    #endif
+    if (mValue == frc::DoubleSolenoid::kForward) {
+        CommandBase::pneumatics->StingerForward();
+    } else if (mValue == frc::DoubleSolenoid::kReverse){
+        CommandBase::pneumatics->StingerReverse();
+    } else {
+        CommandBase::pneumatics->StingerOff();
+    }
 }
 
 bool MoveStinger::IsFinished() { 
@@ -34,9 +29,7 @@ bool MoveStinger::IsFinished() {
 
 void MoveStinger::End()
 {
-    #if( PNEUMATICS_SUPPORT )
-        CommandBase::pneumatics->StingerOff();
-    #endif
+    CommandBase::pneumatics->StingerOff();
 }
 
 void MoveStinger::Interrupted() {}

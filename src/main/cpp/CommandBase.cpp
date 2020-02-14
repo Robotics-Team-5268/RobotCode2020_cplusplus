@@ -5,9 +5,7 @@ std::unique_ptr<ColorWheel> CommandBase::colorWheel;
 std::unique_ptr<Drive> CommandBase::drive;
 std::unique_ptr<LiftArm> CommandBase::liftArm;
 std::unique_ptr<OI> CommandBase::oi;
-#if( PNEUMATICS_SUPPORT )
-    std::unique_ptr<Pneumatics> CommandBase::pneumatics;
-#endif
+std::unique_ptr<Pneumatics> CommandBase::pneumatics;
 std::unique_ptr<Winches> CommandBase::winches;
 
 CommandBase::CommandBase(const std::string &name) : frc::CommandGroup(name) {
@@ -24,9 +22,7 @@ void CommandBase::init() {
     colorWheel.reset( new ColorWheel() );
     drive.reset(new Drive());
     liftArm.reset( new LiftArm() );
-    #if( PNEUMATICS_SUPPORT )
-        pneumatics.reset(new Pneumatics());
-    #endif
+    pneumatics.reset(new Pneumatics());
     winches.reset( new Winches() );
     // Keep at the end
 	oi.reset(new OI());
