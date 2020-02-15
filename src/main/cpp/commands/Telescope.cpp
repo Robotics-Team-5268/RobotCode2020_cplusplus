@@ -21,7 +21,7 @@ bool Telescope::IsFinished() {
 
 void Telescope::End()
 {
-
+    winches->telescope( 0.0 );
 }
 
 void Telescope::Interrupted()

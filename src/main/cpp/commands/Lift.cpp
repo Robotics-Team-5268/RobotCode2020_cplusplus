@@ -21,7 +21,7 @@ bool Lift::IsFinished() {
 
 void Lift::End()
 {
-
+    winches->lift( 0.0 );
 }
 
 void Lift::Interrupted()
