@@ -3,18 +3,18 @@
 #include "CommandBase.h"
 
 MoveFlipper::MoveFlipper(double aSetPoint) : CommandBase("MoveFlipper") {
-    Requires(CommandBase::ballIntake.get());
+    Requires(CommandBase::intakeFlipper.get());
     mSetpoint = aSetPoint;
 }
 
 void MoveFlipper::Initialize()
 {
-  ballIntake->Enable();
-  ballIntake->SetSetpoint( mSetpoint );
+  intakeFlipper->Enable();
+  intakeFlipper->SetSetpoint( mSetpoint );
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool MoveFlipper::IsFinished()
 {
-    return ballIntake->OnTarget();
+    return intakeFlipper->OnTarget();
 }

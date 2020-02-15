@@ -15,7 +15,7 @@
 #include "commands/SpinRotations.h"
 #include "commands/Telescope.h"
 
-#include "subsystems/BallIntake.h"
+#include "subsystems/IntakeFlipper.h"
 #include "subsystems/LiftArm.h"
 
 OI::OI() {
@@ -38,9 +38,9 @@ OI::OI() {
   mechanismsBtns[2]->WhenPressed( new MoveArm( LiftArm::cRaiseArm ) ); // X
 
   // RB
-  mechanismsBtns[4]->WhenPressed( new MoveFlipper( BallIntake::cOpenFlipper ) );
+  mechanismsBtns[4]->WhenPressed( new MoveFlipper( IntakeFlipper::cOpenFlipper ) );
   mechanismsBtns[4]->WhileHeld( new ShootBall() );
-  mechanismsBtns[4]->WhenReleased( new MoveFlipper( BallIntake::cCloseFlipper ) );
+  mechanismsBtns[4]->WhenReleased( new MoveFlipper( IntakeFlipper::cCloseFlipper ) );
 
   // LB
   mechanismsBtns[5]->WhileHeld( new PickupBall() );
