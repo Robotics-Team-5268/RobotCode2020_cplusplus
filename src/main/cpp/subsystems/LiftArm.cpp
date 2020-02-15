@@ -8,6 +8,7 @@ LiftArm::LiftArm() : PIDSubsystem("LiftArm", 7.0, 0.0, 8.0)
     mEncoder.SetDistancePerPulse(360.0 / pulsesPerRevolution );
     SetAbsoluteTolerance(0.005);
     GetPIDController()->SetContinuous(false);
+    GetPIDController()->SetOutputRange( 0.01, 0.15 );
 }
 
 LiftArm::~LiftArm()
