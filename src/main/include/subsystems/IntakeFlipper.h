@@ -1,24 +1,18 @@
 #pragma once
 
-#include <frc/commands/PIDSubsystem.h>
+#include <frc/commands/Subsystem.h>
 #include <frc/Encoder.h>
 #include <ctre/Phoenix.h>
 #include "RobotMap.h"
 
-class IntakeFlipper : public frc::PIDSubsystem {
+class IntakeFlipper : public frc::Subsystem {
 public:
-    static constexpr double cOpenFlipper = 15.0; // Move 15 degrees for testing
-    static constexpr double cCloseFlipper = 0.0;
-
     IntakeFlipper();
     virtual ~IntakeFlipper();
 
-    // No default command, if PID is enabled, the current setpoint will be maintained.
-    void InitDefaultCommand() override;
+    int getEncoderValue();
 
-    double ReturnPIDInput() override;
-
-    void UsePIDOutput(double aOutput) override;
+    void setSpeed( double aPercentOutput );
 
 private:
     WPI_TalonSRX mFlipperSpeedController{BALL_INTAKE_FLIPPER_SPEED_CONTROLLER};

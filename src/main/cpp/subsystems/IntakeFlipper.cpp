@@ -1,14 +1,9 @@
 #include "subsystems/IntakeFlipper.h"
 
-IntakeFlipper::IntakeFlipper() : PIDSubsystem("IntakeFlipper", 7.0, 0.0, 8.0)
+IntakeFlipper::IntakeFlipper() : Subsystem("IntakeFlipper")
 {
-    // Value taken from REV-11-1271 datasheet
-    const double pulsesPerRevolution = 8192.0;
-    // Set the distance per pulse to work in degrees
-    mFlipperEncoder.SetDistancePerPulse(360.0 / pulsesPerRevolution );
-    SetAbsoluteTolerance(0.005);
-    GetPIDController()->SetContinuous(false);
-    GetPIDController()->SetOutputRange( 0.01, 0.15 );
+    mFlipperSpeedController.SetInverted( true );
+    mFlipperEncoder.SetReverseDirection( true );
 }
 
 IntakeFlipper::~IntakeFlipper()
@@ -16,17 +11,12 @@ IntakeFlipper::~IntakeFlipper()
 
 }
 
-void IntakeFlipper::InitDefaultCommand()
-{
-
-}
-
-double IntakeFlipper::ReturnPIDInput()
+int IntakeFlipper::getEncoderValue()
 {
     return mFlipperEncoder.Get();
 }
 
-void IntakeFlipper::UsePIDOutput(double aOutput)
+void IntakeFlipper::setSpeed( double aPercentOutput )
 {
-    mFlipperSpeedController.PIDWrite(aOutput);
+    mFlipperSpeedController.Set( aPercentOutput );
 }

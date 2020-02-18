@@ -38,13 +38,12 @@ OI::OI() {
   mechanismsBtns[2]->WhenPressed( new MoveArm( LiftArm::cRaiseArm ) ); // X
 
   // RB
-  mechanismsBtns[4]->WhenPressed( new MoveFlipper( IntakeFlipper::cOpenFlipper ) );
+  mechanismsBtns[4]->WhenPressed( new MoveFlipper( true ) );
   mechanismsBtns[4]->WhileHeld( new ShootBall() );
-  mechanismsBtns[4]->WhenReleased( new MoveFlipper( IntakeFlipper::cCloseFlipper ) );
+  mechanismsBtns[4]->WhenReleased( new MoveFlipper( false ) );
 
   // LB
   mechanismsBtns[5]->WhileHeld( new PickupBall() );
-
 
   // mechanismsBtns[2]->WhileHeld( new ReadColorSensor() ); // Test command not currently used
 

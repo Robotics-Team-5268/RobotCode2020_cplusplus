@@ -4,10 +4,12 @@
 
 class MoveFlipper : public CommandBase {
    public:
-      MoveFlipper(double aSetPoint);
+      MoveFlipper( bool aOpen );
+      void End() override;
+      void Execute() override;
       void Initialize() override;
       bool IsFinished() override;
 
   private:
-    double mSetpoint;
+    bool mOpen;
 };
