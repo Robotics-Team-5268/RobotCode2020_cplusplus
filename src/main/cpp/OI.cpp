@@ -35,7 +35,7 @@ OI::OI() {
   mechanismsBtns[1]->WhileHeld( new Telescope( true ) ); // B
   mechanismsBtns[3]->WhileHeld( new Telescope( false ) ); // Y
 
-  mechanismsBtns[2]->WhenPressed( new MoveArm( LiftArm::cRaiseArm ) ); // X
+  mechanismsBtns[2]->WhenPressed( new MoveArm( true ) ); // X
 
   // RB
   mechanismsBtns[4]->WhenPressed( new MoveFlipper( true ) );

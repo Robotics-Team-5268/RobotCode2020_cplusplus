@@ -4,10 +4,12 @@
 
 class MoveArm : public CommandBase {
    public:
-      MoveArm(double aSetPoint);
+      MoveArm( bool aRaise );
+      void End() override;
+      void Execute() override;
       void Initialize() override;
       bool IsFinished() override;
 
   private:
-    double mSetpoint;
+    bool mRaise;
 };

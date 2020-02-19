@@ -1,24 +1,18 @@
 #pragma once
 
-#include <frc/commands/PIDSubsystem.h>
+#include <frc/commands/Subsystem.h>
 #include <frc/Encoder.h>
 #include <ctre/Phoenix.h>
 #include "RobotMap.h"
 
-class LiftArm : public frc::PIDSubsystem {
+class LiftArm : public frc::Subsystem {
 public:
-    static constexpr double cRaiseArm = 90.0;
-    static constexpr double cLowerArm = 0.0;
-
     LiftArm();
     virtual ~LiftArm();
 
-    // No default command, if PID is enabled, the current setpoint will be maintained.
-    void InitDefaultCommand() override;
+    int getEncoderValue();
 
-    double ReturnPIDInput() override;
-
-    void UsePIDOutput(double aOutput) override;
+    void setSpeed( double aPercentOutput );
 
 private:
     WPI_TalonSRX mSpeedController{LIFT_ARM_SPEED_CONTROLLER};
