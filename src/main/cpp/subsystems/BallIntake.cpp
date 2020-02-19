@@ -2,7 +2,7 @@
 
 BallIntake::BallIntake() : Subsystem("BallIntake")
 {
-
+    mLowerSpeedController.SetInverted( true );
 }
 
 BallIntake::~BallIntake()
