@@ -14,7 +14,14 @@ void MoveFlipper::End()
 
 void MoveFlipper::Execute()
 {
-  intakeFlipper->setSpeed( 0.4 );
+  if( mOpen )
+  {
+    intakeFlipper->setSpeed( 0.4 );
+  }
+  else
+  {
+    intakeFlipper->setSpeed( -0.4 );
+  }
 }
 
 void MoveFlipper::Initialize()
@@ -44,5 +51,5 @@ bool MoveFlipper::IsFinished()
     }
   }
   
-    return finished;
+  return finished;
 }
