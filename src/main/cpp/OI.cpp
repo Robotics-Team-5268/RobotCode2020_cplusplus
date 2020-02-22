@@ -35,7 +35,7 @@ OI::OI() {
   mechanismsBtns[1]->WhileHeld( new Telescope( true ) ); // B
   mechanismsBtns[3]->WhileHeld( new Telescope( false ) ); // Y
 
-  mechanismsBtns[2]->WhenPressed( new MoveArm( true ) ); // X
+  mechanismsBtns[2]->WhenPressed( new SpinColor() ); // X
 
   // RB
   mechanismsBtns[4]->WhenPressed( new MoveFlipper( true ) );
@@ -48,14 +48,16 @@ OI::OI() {
   // mechanismsBtns[2]->WhileHeld( new ReadColorSensor() ); // Test command not currently used
 
   // R3
-  mechanismsBtns[9]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kForward));
+  mechanismsBtns[6]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kForward));
   // mechanismsBtns[3]->WhenPressed(new MoveStinger(frc::DoubleSolenoid::kReverse)); // Not currently retracting the stinger
 
   // The game requires 3-5 spins.  Start at 4 to maximimize error tolerance
   const int desiredRotations = 4;
   mechanismsBtns[7]->WhenPressed( new SpinRotations( desiredRotations ) ); // RT - need to fix
-  mechanismsBtns[8]->WhenPressed( new SpinColor() ); // LT - need to fix
-}
+
+  mechanismsBtns[8]->WhenPressed( new MoveArm( true ) ); // L3
+  mechanismsBtns[9]->WhenPressed( new MoveArm( false ) ); // R3
+  }
 
 std::shared_ptr<frc::Joystick> OI::getDriverJoystick() {
 	return driverJoystick;
