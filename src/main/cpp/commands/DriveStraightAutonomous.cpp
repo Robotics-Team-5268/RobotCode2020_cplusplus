@@ -1,7 +1,8 @@
 #include "commands/DriveStraightAutonomous.h"
 
+#include "Commands.h"
 
-void DriveStraightAutonomous::End(){
+void DriveStraightAutonomous::End(bool interrupted){
 }
 
 void DriveStraightAutonomous::Initialize(){
@@ -15,6 +16,9 @@ bool DriveStraightAutonomous::IsFinished(){
     return true;
 }
 
-DriveStraightAutonomous::DriveStraightAutonomous() : CommandBase("DriveStraightDistance") {
+DriveStraightAutonomous::DriveStraightAutonomous() {
+
+    SetName( "DriveStraightDistance" );
+
     mStartTime = 0;
 }

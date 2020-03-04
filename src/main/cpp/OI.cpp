@@ -15,9 +15,9 @@ OI::OI() {
       mechanismsJoystick.reset(new frc::Joystick(1));
   #endif
   for (int i=1; i<=10; i++){
-    driverBtns.push_back(new frc::JoystickButton(driverJoystick.get(), i));
+    driverBtns.push_back(new frc2::JoystickButton(driverJoystick.get(), i));
     #if( PNEUMATICS_SUPPORT )
-        mechanismsBtns.push_back(new frc::JoystickButton(mechanismsJoystick.get(), i));
+        mechanismsBtns.push_back(new frc2::JoystickButton(mechanismsJoystick.get(), i));
     #endif
   }
 

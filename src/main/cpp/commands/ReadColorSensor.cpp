@@ -1,16 +1,18 @@
 #include <commands/ReadColorSensor.h>
+#include "Commands.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <subsystems/ColorWheel.h>
 
+ReadColorSensor::ReadColorSensor()  {
+    AddRequirements( Commands::colorWheel.get() );
 
-ReadColorSensor::ReadColorSensor() : CommandBase("ReadColorSensor") {
-    Requires( colorWheel.get() );
+    SetName( "ReadColorSensor" );
 }
 
 void ReadColorSensor::Initialize() {}
 
 void ReadColorSensor::Execute() {
-    ColorWheel::ColorReading colorReading = colorWheel->readColorSensor();
+    ColorWheel::ColorReading colorReading = Commands::colorWheel->readColorSensor();
 
     std::string colorString = "No Match";
     switch( colorReading.matchedColor )
@@ -46,12 +48,7 @@ bool ReadColorSensor::IsFinished() {
     return true; 
 }
 
-void ReadColorSensor::End()
-{
-
-}
-
-void ReadColorSensor::Interrupted()
+void ReadColorSensor::End(bool interrupted)
 {
 
 }

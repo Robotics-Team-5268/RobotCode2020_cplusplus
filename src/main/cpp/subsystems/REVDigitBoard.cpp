@@ -6,12 +6,14 @@
 #include <string.h>
 #include <cctype>
 
-REVDigitBoard::REVDigitBoard() : frc::Subsystem("REVDigitBoard")
+REVDigitBoard::REVDigitBoard() : frc2::SubsystemBase()
 		, i2c( frc::I2C::kMXP, 0x70 )
 		, buttonA( 19 )
 		, buttonB( 20 )
 		, pot( 3 )
 	{
+		SetName( "REVDigitBoard" );
+
 		byte osc;
 	 	byte blink;
 	 	byte bright;
@@ -102,8 +104,6 @@ REVDigitBoard::REVDigitBoard() : frc::Subsystem("REVDigitBoard")
 		charreg[36][0] = (byte)0b00000000; charreg[36][1] = (byte)0b00000000; //space
 		charmap[' '] = 36;
 	}
-
-	void REVDigitBoard::InitDefaultCommand() {}
 
 	void REVDigitBoard::display(std::string str) { // only displays first 4 chars
 		byte charz[4] = {36,36,36,36};

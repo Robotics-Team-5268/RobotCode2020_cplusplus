@@ -1,7 +1,9 @@
 #include "commands/Move.h"
 
-Move::Move(float tm, float spd) : CommandBase() {
-  Requires(drive.get());
+#include "Commands.h"
+
+Move::Move(float tm, float spd) {
+  AddRequirements(Commands::drive.get());
   pid = nullptr;
   seconds = tm;
   speed = spd;
@@ -20,6 +22,4 @@ bool Move::IsFinished() {
   return timer->HasPeriodPassed(seconds); 
   }
 
-void Move::End() {}
-
-void Move::Interrupted() {}
+void Move::End(bool interrupted) {}

@@ -1,6 +1,6 @@
 #include "subsystems/Drive.h"
-#include "commands/DriveWithJoystick.h"
 
+#include "Commands.h"
 #include <frc/smartDashBoard/SmartDashBoard.h>
 
 #define SCFL_INVERTED false
@@ -8,7 +8,9 @@
 #define SCFR_INVERTED false
 #define SCBR_INVERTED false
 
-Drive::Drive() : Subsystem("Drive") {
+Drive::Drive() : frc2::SubsystemBase() {
+	SetName( "Drive" );
+
 	oldLeftSpeed = 0.0;
 	oldRightSpeed = 0.0;
 	velocityToCommandIntercept[0] = -316.89;
@@ -25,13 +27,9 @@ Drive::Drive() : Subsystem("Drive") {
 	speedControllerBR.SetInverted(SCBR_INVERTED);
 }
 
-void Drive::InitDefaultCommand() {
-  SetDefaultCommand(new DriveWithJoystick());
-}
-
 void Drive::takeInput() {
-	float leftSpeed = -CommandBase::oi->getDriverJoystick()->GetRawAxis(1);
-	float rightSpeed = -CommandBase::oi->getDriverJoystick()->GetRawAxis(5);
+	float leftSpeed = -Commands::oi->getDriverJoystick()->GetRawAxis(1);
+	float rightSpeed = -Commands::oi->getDriverJoystick()->GetRawAxis(5);
 
 	if (leftSpeed > oldLeftSpeed + MAX_CHANGE) leftSpeed = oldLeftSpeed + MAX_CHANGE;
 	else if (leftSpeed < oldLeftSpeed - MAX_CHANGE) leftSpeed = oldLeftSpeed - MAX_CHANGE;

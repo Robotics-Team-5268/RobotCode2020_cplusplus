@@ -1,6 +1,6 @@
 #pragma once
 
-#include <frc/commands/Subsystem.h>
+#include <frc2/command/SubsystemBase.h>
 #include <frc/I2C.h>
 #include <frc/Timer.h>
 #include <frc/DigitalInput.h>
@@ -8,7 +8,7 @@
 #include <string.h>
 // this class controls the REV digit board that we use to choose our autonomous mode
 //without having to redeploy every match.
-class REVDigitBoard: public frc::Subsystem {
+class REVDigitBoard: public frc2::SubsystemBase {
 	typedef unsigned char byte;
 
 	/*
@@ -24,11 +24,10 @@ class REVDigitBoard: public frc::Subsystem {
 	 */
 public:
 	REVDigitBoard();
-	void InitDefaultCommand();
 	void clear();
 	bool getButtonA();
 	bool getButtonB();
-  double getPot();
+	double getPot();
 	void display(double batt);
 	void display(std::string str);
 

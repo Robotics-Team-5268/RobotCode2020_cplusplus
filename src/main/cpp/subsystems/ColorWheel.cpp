@@ -7,9 +7,11 @@ static constexpr frc::Color sRedTarget = frc::Color(0.561, 0.232, 0.114);
 static constexpr frc::Color sYellowTarget = frc::Color(0.361, 0.524, 0.113);
 
 ColorWheel::ColorWheel() 
-    : Subsystem("ColorWheel")
+    : frc2::SubsystemBase()
     , mColorSensor( frc::I2C::Port::kOnboard )
 {
+    SetName( "ColorWheel" );
+
     mColorMatcher.AddColorMatch(sBlueTarget);
     mColorMatcher.AddColorMatch(sGreenTarget);
     mColorMatcher.AddColorMatch(sRedTarget);

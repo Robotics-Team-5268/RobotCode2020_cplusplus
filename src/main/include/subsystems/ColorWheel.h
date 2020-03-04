@@ -1,10 +1,10 @@
 #pragma once
 
-#include <frc/commands/Subsystem.h>
+#include <frc2/command/SubsystemBase.h>
 #include "rev/ColorSensorV3.h"
 #include "rev/ColorMatch.h"
 
-class ColorWheel : public frc::Subsystem {
+class ColorWheel : public frc2::SubsystemBase {
     public:
         enum MatchedColor
         {

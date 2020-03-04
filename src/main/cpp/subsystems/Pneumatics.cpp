@@ -1,7 +1,7 @@
 #include "subsystems/Pneumatics.h"
 
-Pneumatics::Pneumatics() : Subsystem("Pnuematics") {
-
+Pneumatics::Pneumatics() : frc2::SubsystemBase() {
+    SetName( "Pneumatics" );
 }
 
 void Pneumatics::Forward() {
