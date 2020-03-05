@@ -3,7 +3,7 @@
 #include "RobotContainer.h"
 #include <subsystems/ColorWheel.h>
 
-class SpinColor : public RobotContainer {
+class SpinColor : public frc::Command {
  public:
   SpinColor();
   void Initialize() override;

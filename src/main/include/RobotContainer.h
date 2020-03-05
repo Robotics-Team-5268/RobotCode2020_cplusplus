@@ -2,9 +2,6 @@
 
 #include <memory>
 
-#include <frc/commands/CommandGroup.h>
-#include <string.h>
-
 #include "subsystems/BallIntake.h"
 #include "subsystems/ColorWheel.h"
 #include "subsystems/Drive.h"
@@ -14,10 +11,8 @@
 #include "subsystems/Winches.h"
 #include "OI.h"
 
-class RobotContainer : public frc::CommandGroup {
+class RobotContainer {
  public:
-  RobotContainer(const std::string &name);
-  RobotContainer();
   static void init();
 
   static std::unique_ptr<BallIntake> ballIntake;

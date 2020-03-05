@@ -12,18 +12,18 @@ MoveFlipper::MoveFlipper( bool aOpen )
 
 void MoveFlipper::End()
 {
-  intakeFlipper->setSpeed( 0.0 );
+  RobotContainer::intakeFlipper->setSpeed( 0.0 );
 }
 
 void MoveFlipper::Execute()
 {
   if( mOpen )
   {
-    intakeFlipper->setSpeed( 0.4 );
+    RobotContainer::intakeFlipper->setSpeed( 0.4 );
   }
   else
   {
-    intakeFlipper->setSpeed( -0.4 );
+    RobotContainer::intakeFlipper->setSpeed( -0.4 );
   }
 }
 
@@ -41,14 +41,14 @@ bool MoveFlipper::IsFinished()
      // Value taken from REV-11-1271 datasheet
      // const double pulsesPerRevolution = 8192.0;
      // 850 pulses * 360 degrees / 8192 pulses pre revolution ~=  37 degrees
-    if( intakeFlipper->getEncoderValue() >= 850 )
+    if( RobotContainer::intakeFlipper->getEncoderValue() >= 850 )
     {
       finished = true;
     }
   }
   else
   {
-    if( intakeFlipper->getEncoderValue() <= 0 )
+    if( RobotContainer::intakeFlipper->getEncoderValue() <= 0 )
     {
       finished = true;
     }

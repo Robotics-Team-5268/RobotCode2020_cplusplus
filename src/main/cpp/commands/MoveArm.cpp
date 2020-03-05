@@ -2,6 +2,8 @@
 
 #include "RobotContainer.h"
 
+#include "RobotContainer.h"
+
 MoveArm::MoveArm( bool aRaise )
 {
   SetName( "MoveArm" );
@@ -12,18 +14,18 @@ MoveArm::MoveArm( bool aRaise )
 
 void MoveArm::End()
 {
-  liftArm->setSpeed( 0.0 );
+  RobotContainer::liftArm->setSpeed( 0.0 );
 }
 
 void MoveArm::Execute()
 {
   if( mRaise )
   {
-    liftArm->setSpeed( 0.4 );
+    RobotContainer::liftArm->setSpeed( 0.4 );
   }
   else
   {
-    liftArm->setSpeed( -0.4 );
+    RobotContainer::liftArm->setSpeed( -0.4 );
   }
 }
 
@@ -42,14 +44,14 @@ bool MoveArm::IsFinished()
      // Value taken from REV-11-1271 datasheet
      // const double pulsesPerRevolution = 8192.0;
      // 3072 pulses * 360 degrees / 8192 pulses pre revolution ~=  135 degrees
-    if( liftArm->getEncoderValue() >= 3072 )
+    if( RobotContainer::liftArm->getEncoderValue() >= 3072 )
     {
       finished = true;
     }
   }
   else
   {
-    if( liftArm->getEncoderValue() <= 0 )
+    if( RobotContainer::liftArm->getEncoderValue() <= 0 )
     {
       finished = true;
     }    

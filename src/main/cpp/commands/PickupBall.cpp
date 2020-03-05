@@ -1,17 +1,19 @@
 #include "commands/PickupBall.h"
 
+#include "RobotContainer.h"
+
 PickupBall::PickupBall()
 {
     SetName("PickupBall");
 
-    Requires( ballIntake.get() );
+    Requires( RobotContainer::ballIntake.get() );
 }
 
 void PickupBall::Initialize() {}
 
 void PickupBall::Execute() {
-    ballIntake->setLowerSpeed( 0.7 );
-    ballIntake->setUpperSpeed( 0.3 );
+    RobotContainer::ballIntake->setLowerSpeed( 0.7 );
+    RobotContainer::ballIntake->setUpperSpeed( 0.3 );
 }
 
 bool PickupBall::IsFinished() { 
@@ -20,8 +22,8 @@ bool PickupBall::IsFinished() {
 
 void PickupBall::End()
 {
-    ballIntake->setLowerSpeed( 0.0 );
-    ballIntake->setUpperSpeed( 0.0 );
+    RobotContainer::ballIntake->setLowerSpeed( 0.0 );
+    RobotContainer::ballIntake->setUpperSpeed( 0.0 );
 }
 
 void PickupBall::Interrupted()

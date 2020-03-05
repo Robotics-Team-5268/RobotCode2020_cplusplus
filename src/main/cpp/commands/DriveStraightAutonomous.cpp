@@ -1,14 +1,16 @@
 #include "commands/DriveStraightAutonomous.h"
 
+#include "RobotContainer.h"
+
 DriveStraightAutonomous::DriveStraightAutonomous()
 {
     SetName( "DriveStraightDistance" );
-    Requires( drive.get() );
+    Requires( RobotContainer::drive.get() );
 }
 
 void DriveStraightAutonomous::End()
 {
-    drive->setMotors( 0.0, 0.0 );
+    RobotContainer::drive->setMotors( 0.0, 0.0 );
 }
 
 void DriveStraightAutonomous::Initialize()
@@ -19,7 +21,8 @@ void DriveStraightAutonomous::Initialize()
 
 void DriveStraightAutonomous::Execute()
 {
-    // drive->setMotors( 0.1, 0.1 );
+    // TODO: Uncomment this once it can be tested
+    // RobotContainer::drive->setMotors( 0.1, 0.1 );
 }
 
 bool DriveStraightAutonomous::IsFinished()

@@ -9,14 +9,6 @@ std::unique_ptr<OI> RobotContainer::oi;
 std::unique_ptr<Pneumatics> RobotContainer::pneumatics;
 std::unique_ptr<Winches> RobotContainer::winches;
 
-RobotContainer::RobotContainer(const std::string &name) : frc::CommandGroup(name) {
-  
-}
-
-RobotContainer::RobotContainer() : frc::CommandGroup() {
-
-}
-
 void RobotContainer::init() {
 
     ballIntake.reset( new BallIntake() );

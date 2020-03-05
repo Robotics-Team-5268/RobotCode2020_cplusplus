@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RobotContainer.h"
+#include <frc/commands/Command.h>
 
-class PickupBall : public RobotContainer {
+class PickupBall : public frc::Command {
  public:
   PickupBall();
   void Initialize() override;

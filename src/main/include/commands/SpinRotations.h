@@ -3,7 +3,7 @@
 #include "RobotContainer.h"
 #include <subsystems/ColorWheel.h>
 
-class SpinRotations : public RobotContainer {
+class SpinRotations : public frc::Command {
  public:
   SpinRotations
     (

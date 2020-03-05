@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RobotContainer.h"
+#include <frc/commands/Command.h>
 
-class DriveStraightAutonomous : public RobotContainer {
+class DriveStraightAutonomous : public frc::Command {
 public:
     DriveStraightAutonomous();
 

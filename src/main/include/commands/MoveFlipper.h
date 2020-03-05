@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RobotContainer.h"
+#include <frc/commands/Command.h>
 
-class MoveFlipper : public RobotContainer {
+class MoveFlipper : public frc::Command {
    public:
       MoveFlipper( bool aOpen );
       void End() override;

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "RobotContainer.h"
+#include <frc/commands/Command.h>
 
 #include <frc/DoubleSolenoid.h>
 
-class MoveStinger : public RobotContainer {
+class MoveStinger : public frc::Command {
  public:
   MoveStinger(frc::DoubleSolenoid::Value aValue);
   void Initialize() override;

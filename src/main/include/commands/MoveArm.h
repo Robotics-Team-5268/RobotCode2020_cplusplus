@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RobotContainer.h"
+#include <frc/commands/Command.h>
 
-class MoveArm : public RobotContainer {
+class MoveArm : public frc::Command {
    public:
       MoveArm( bool aRaise );
       void End() override;

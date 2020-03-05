@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RobotContainer.h"
+#include <frc/commands/Command.h>
 
-class ReadColorSensor : public RobotContainer {
+class ReadColorSensor : public frc::Command {
  public:
   ReadColorSensor();
   void Initialize() override;

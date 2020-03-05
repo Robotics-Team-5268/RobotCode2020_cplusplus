@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RobotContainer.h"
+#include <frc/commands/Command.h>
 
-class DriveWithJoystick : public RobotContainer {
+class DriveWithJoystick : public frc::Command {
  public:
   DriveWithJoystick();
   void Initialize() override;

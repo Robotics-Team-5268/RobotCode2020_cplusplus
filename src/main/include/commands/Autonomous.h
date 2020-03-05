@@ -1,9 +1,8 @@
 #pragma once
 
 #include <frc/commands/Command.h>
-#include "RobotContainer.h"
 
-class Autonomous : public RobotContainer {
+class Autonomous : public frc::Command {
  public:
   Autonomous(int aSelection);
 };

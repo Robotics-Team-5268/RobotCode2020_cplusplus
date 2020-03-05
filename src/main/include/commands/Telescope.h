@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RobotContainer.h"
+#include <frc/commands/Command.h>
 
-class Telescope : public RobotContainer {
+class Telescope : public frc::Command {
   public:
     Telescope( bool aExtend );
     void Initialize() override;

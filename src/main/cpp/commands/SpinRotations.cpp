@@ -2,6 +2,8 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <subsystems/ColorWheel.h>
 
+#include "RobotContainer.h"
+
 static const int ColorsPerRotation = 8;
 
 SpinRotations::SpinRotations( int aNumRotations )
@@ -10,7 +12,7 @@ SpinRotations::SpinRotations( int aNumRotations )
     , mColorChangeCount( 0 )
 {
     SetName("SpinRotations");
-    Requires( colorWheel.get() );
+    Requires( RobotContainer::colorWheel.get() );
 }
 
 void SpinRotations::Initialize()
@@ -20,7 +22,7 @@ void SpinRotations::Initialize()
 }
 
 void SpinRotations::Execute() {
-    ColorWheel::ColorReading colorReading = colorWheel->readColorSensor();
+    ColorWheel::ColorReading colorReading = RobotContainer::colorWheel->readColorSensor();
 
     if( colorReading.matchedColor != mLastMatchedColor )
     {
@@ -29,7 +31,7 @@ void SpinRotations::Execute() {
     }
 
     // Spin at a slow speed until we determine reliability of the system
-    colorWheel->spin( 0.2 );
+    RobotContainer::colorWheel->spin( 0.2 );
 
     std::string colorString = "No Match";
     switch( colorReading.matchedColor )
@@ -65,7 +67,7 @@ bool SpinRotations::IsFinished()
 
 void SpinRotations::End()
 {
-    colorWheel->spin( 0.0 );
+    RobotContainer::colorWheel->spin( 0.0 );
 }
 
 void SpinRotations::Interrupted()
