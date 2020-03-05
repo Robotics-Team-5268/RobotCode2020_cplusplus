@@ -4,14 +4,15 @@ ShiftGears::ShiftGears( Pneumatics* aPneumatics, frc::DoubleSolenoid::Value aVal
     : mPneumatics( aPneumatics )
 {
     SetName("ShiftGears");
-    Requires( mPneumatics );
+    AddRequirements( mPneumatics );
     mValue = aValue;
 }
 
 void ShiftGears::Initialize()
 {
+    // TODO: Figure out timeouts
     // We want this command to run for 200 ms
-    SetTimeout( 0.2 );
+    //WithTimeout( 0.2 );
 }
 
 void ShiftGears::Execute() {
@@ -28,7 +29,7 @@ bool ShiftGears::IsFinished() {
     return true; 
 }
 
-void ShiftGears::End()
+void ShiftGears::End(bool interrupted)
 {
     mPneumatics->ShiftOff();
 }

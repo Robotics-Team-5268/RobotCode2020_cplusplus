@@ -1,11 +1,11 @@
 #pragma once
 
-#include <frc/commands/Subsystem.h>
+#include <frc2/command/SubsystemBase.h>
 #include <frc/Encoder.h>
 #include <ctre/Phoenix.h>
 #include "RobotMap.h"
 
-class LiftArm : public frc::Subsystem {
+class LiftArm : public frc2::SubsystemBase {
 public:
     LiftArm();
     virtual ~LiftArm();

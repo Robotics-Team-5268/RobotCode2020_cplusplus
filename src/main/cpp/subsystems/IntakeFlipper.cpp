@@ -1,7 +1,8 @@
 #include "subsystems/IntakeFlipper.h"
 
-IntakeFlipper::IntakeFlipper() : Subsystem("IntakeFlipper")
+IntakeFlipper::IntakeFlipper()
 {
+    SetName( "IntakeFlipper" );
     mFlipperSpeedController.SetInverted( true );
     mFlipperEncoder.SetReverseDirection( true );
 }

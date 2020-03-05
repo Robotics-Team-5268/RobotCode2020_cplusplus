@@ -1,7 +1,7 @@
 #pragma once
 
 #include <frc/TimedRobot.h>
-#include <frc/commands/Command.h>
+#include <frc2/command/Command.h>
 #include <frc/smartdashboard/SendableChooser.h>
 
 #include "RobotContainer.h"
@@ -25,5 +25,5 @@ private:
 
   RobotContainer mRobotContainer;
 
-  frc::Command* mAutonomousCommand;
+  frc2::Command* mAutonomousCommand;
 };

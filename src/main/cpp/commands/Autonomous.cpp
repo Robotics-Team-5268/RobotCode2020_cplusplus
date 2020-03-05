@@ -5,11 +5,11 @@ Autonomous::Autonomous( Drive* aDrive, int aSelection )
 {
   SetName( "Autonomous" );
 
-  Requires( mDrive );
+  AddRequirements( mDrive );
 
 }
 
-void Autonomous::End()
+void Autonomous::End(bool interrupted)
 {
   mDrive->setMotors(0.0, 0.0);
 }

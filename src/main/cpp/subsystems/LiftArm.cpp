@@ -1,8 +1,8 @@
 #include "subsystems/LiftArm.h"
 
-LiftArm::LiftArm() : Subsystem("LiftArm")
+LiftArm::LiftArm()
 {
-
+    SetName( "LiftArm" );
 }
 
 LiftArm::~LiftArm()

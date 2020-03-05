@@ -5,7 +5,7 @@ Lift::Lift( Winches* aWinches, bool aRaise )
     , mRaise( aRaise )
 {
     SetName( "Lift" );
-    Requires( mWinches );
+    AddRequirements( mWinches );
 }
 
 void Lift::Initialize() {}
@@ -20,7 +20,7 @@ bool Lift::IsFinished() {
     return true; 
 }
 
-void Lift::End()
+void Lift::End(bool interrupted)
 {
     mWinches->lift( 0.0 );
 }

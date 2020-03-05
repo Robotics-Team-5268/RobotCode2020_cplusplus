@@ -1,7 +1,8 @@
 #include "subsystems/Winches.h"
 
-Winches::Winches() : Subsystem("Winches") {
-
+Winches::Winches()
+{
+    SetName( "Winches" );
 }
 
 Winches::~Winches()

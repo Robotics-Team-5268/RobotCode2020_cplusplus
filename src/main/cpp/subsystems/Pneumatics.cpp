@@ -1,7 +1,8 @@
 #include "subsystems/Pneumatics.h"
 
-Pneumatics::Pneumatics() : Subsystem("Pnuematics") {
-
+Pneumatics::Pneumatics()
+{
+    SetName( "Pnuematics" );
 }
 
 void Pneumatics::ShiftForward() {

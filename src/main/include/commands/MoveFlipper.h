@@ -1,12 +1,14 @@
 #pragma once
 
-#include <frc/commands/Command.h>
+#include <frc2/command/CommandBase.h>
+#include <frc2/command/CommandHelper.h>
 #include "subsystems/IntakeFlipper.h"
 
-class MoveFlipper : public frc::Command {
+class MoveFlipper : public frc2::CommandHelper<frc2::CommandBase, MoveFlipper>
+{
    public:
       MoveFlipper( IntakeFlipper* aIntakeFlipper, bool aOpen );
-      void End() override;
+      void End(bool interrupted) override;
       void Execute() override;
       void Initialize() override;
       bool IsFinished() override;

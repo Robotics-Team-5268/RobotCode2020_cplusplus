@@ -4,7 +4,7 @@ ShootBall::ShootBall( BallIntake* aBallIntake )
     : mBallIntake( aBallIntake )
 {
     SetName("ShootBall");
-    Requires( mBallIntake );
+    AddRequirements( mBallIntake );
 }
 
 void ShootBall::Initialize() {}
@@ -17,7 +17,7 @@ bool ShootBall::IsFinished() {
     return true; 
 }
 
-void ShootBall::End()
+void ShootBall::End(bool interrupted)
 {
     mBallIntake->setUpperSpeed( 0.0 );
 }

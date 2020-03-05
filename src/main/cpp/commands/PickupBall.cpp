@@ -5,7 +5,7 @@ PickupBall::PickupBall( BallIntake* aBallIntake )
 {
     SetName("PickupBall");
 
-    Requires( mBallIntake );
+    AddRequirements( mBallIntake );
 }
 
 void PickupBall::Initialize() {}
@@ -19,7 +19,7 @@ bool PickupBall::IsFinished() {
     return true; 
 }
 
-void PickupBall::End()
+void PickupBall::End(bool interrupted)
 {
     mBallIntake->setLowerSpeed( 0.0 );
     mBallIntake->setUpperSpeed( 0.0 );

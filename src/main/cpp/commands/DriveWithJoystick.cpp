@@ -5,7 +5,7 @@ DriveWithJoystick::DriveWithJoystick( Drive* aDrive, const std::shared_ptr<frc::
   , mJoystick( aJoystick )
 {
   SetName( "DriveWithJoystick" );
-  Requires( mDrive );
+  AddRequirements( mDrive );
 }
 
 void DriveWithJoystick::Initialize() {}
@@ -19,4 +19,4 @@ void DriveWithJoystick::Execute() {
 
 bool DriveWithJoystick::IsFinished() { return true; }
 
-void DriveWithJoystick::End() {}
+void DriveWithJoystick::End(bool interrupted) {}

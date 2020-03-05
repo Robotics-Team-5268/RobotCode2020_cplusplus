@@ -5,7 +5,7 @@ Telescope::Telescope( Winches* aWinches, bool aExtend )
     , mExtend( aExtend )
 {
     SetName("Telescope");
-    Requires( aWinches );
+    AddRequirements( aWinches );
 }
 
 void Telescope::Initialize() {}
@@ -20,7 +20,7 @@ bool Telescope::IsFinished() {
     return true; 
 }
 
-void Telescope::End()
+void Telescope::End(bool interrupted)
 {
     mWinches->telescope( 0.0 );
 }

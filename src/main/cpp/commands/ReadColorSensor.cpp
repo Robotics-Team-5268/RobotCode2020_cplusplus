@@ -6,7 +6,7 @@ ReadColorSensor::ReadColorSensor( ColorWheel* aColorWheel )
     : mColorWheel( aColorWheel )
 {
     SetName( "ReadColorSensor" );
-    Requires( mColorWheel );
+    AddRequirements( mColorWheel );
 }
 
 void ReadColorSensor::Initialize() {}
@@ -48,7 +48,7 @@ bool ReadColorSensor::IsFinished() {
     return true; 
 }
 
-void ReadColorSensor::End()
+void ReadColorSensor::End(bool interrupted)
 {
 
 }

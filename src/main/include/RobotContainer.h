@@ -6,7 +6,7 @@
 #include "commands/Autonomous.h"
 
 #include <frc/Joystick.h>
-#include <frc/buttons/JoystickButton.h>
+#include <frc2/command/button/JoystickButton.h>
 
 #include "subsystems/BallIntake.h"
 #include "subsystems/ColorWheel.h"
@@ -21,7 +21,7 @@ class RobotContainer
 public:
   RobotContainer();
 
-  frc::Command* GetAutonomousCommand();
+  frc2::Command* GetAutonomousCommand();
 
 private:
   void ConfigureButtonBindings();
@@ -36,8 +36,8 @@ private:
 
   std::shared_ptr<frc::Joystick> driverJoystick;
   std::shared_ptr<frc::Joystick> mechanismsJoystick;
-  std::vector<frc::JoystickButton*> driverBtns;
-  std::vector<frc::JoystickButton*> mechanismsBtns;
+  std::vector<frc2::JoystickButton*> driverBtns;
+  std::vector<frc2::JoystickButton*> mechanismsBtns;
 
   Autonomous mAutonomousCommand;
 };

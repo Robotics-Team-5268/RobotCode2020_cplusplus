@@ -23,11 +23,11 @@ RobotContainer::RobotContainer()
     mechanismsJoystick.reset(new frc::Joystick(1));
     for (int i=1; i<=10; i++)
     {
-        driverBtns.push_back(new frc::JoystickButton(driverJoystick.get(), i));
-        mechanismsBtns.push_back(new frc::JoystickButton(mechanismsJoystick.get(), i));
+        driverBtns.push_back(new frc2::JoystickButton(driverJoystick.get(), i));
+        mechanismsBtns.push_back(new frc2::JoystickButton(mechanismsJoystick.get(), i));
     }
 
-    drive.SetDefaultCommand( new DriveWithJoystick( &drive, driverJoystick ) );
+    drive.SetDefaultCommand( DriveWithJoystick( &drive, driverJoystick ) );
 
 	#if( GYRO_SUPPORT )
 		drive.calibrateGyro();
@@ -37,7 +37,7 @@ RobotContainer::RobotContainer()
     ConfigureButtonBindings();
 }
 
-frc::Command* RobotContainer::GetAutonomousCommand()
+frc2::Command* RobotContainer::GetAutonomousCommand()
 {
     return &mAutonomousCommand;
 }

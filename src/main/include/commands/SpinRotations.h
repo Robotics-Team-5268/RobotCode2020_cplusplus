@@ -1,9 +1,11 @@
 #pragma once
 
-#include <frc/commands/Command.h>
+#include <frc2/command/CommandBase.h>
+#include <frc2/command/CommandHelper.h>
 #include <subsystems/ColorWheel.h>
 
-class SpinRotations : public frc::Command {
+class SpinRotations : public frc2::CommandHelper<frc2::CommandBase, SpinRotations>
+{
  public:
   SpinRotations
     (
@@ -13,7 +15,7 @@ class SpinRotations : public frc::Command {
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
-  void End() override;
+  void End(bool interrupted) override;
  private:
     ColorWheel* mColorWheel;
     int mNumRotations;

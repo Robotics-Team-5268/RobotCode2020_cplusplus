@@ -1,7 +1,7 @@
 #pragma once
 
 #include <frc/AnalogGyro.h>
-#include <frc/commands/Subsystem.h>
+#include <frc2/command/SubsystemBase.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/SpeedControllerGroup.h>
 #include <ctre/Phoenix.h>
@@ -10,7 +10,7 @@
 #include "RobotConfig.h"
 #include "RobotMap.h"
 
-class Drive : public frc::Subsystem {
+class Drive : public frc2::SubsystemBase {
  private:
 	WPI_TalonFX mSpeedControllerFL{DRIVE_SPEED_CONTROLLER_FL_CHANNEL};
 	WPI_TalonFX mSpeedControllerBL{DRIVE_SPEED_CONTROLLER_BL_CHANNEL};

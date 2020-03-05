@@ -9,7 +9,7 @@ SpinColor::SpinColor( ColorWheel* aColorWheel )
     , mColorMatched( false )
 {
     SetName( "SpinColor" );
-    Requires( mColorWheel );
+    AddRequirements( mColorWheel );
 }
 
 void SpinColor::Initialize()
@@ -120,7 +120,7 @@ bool SpinColor::IsFinished() {
     return mColorMatched;
 }
 
-void SpinColor::End()
+void SpinColor::End(bool interrupted)
 {
 
 }

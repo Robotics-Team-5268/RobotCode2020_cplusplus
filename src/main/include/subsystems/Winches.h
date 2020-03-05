@@ -1,11 +1,11 @@
 #pragma once
 
-#include <frc/commands/Subsystem.h>
+#include <frc2/command/SubsystemBase.h>
 #include <frc/SpeedControllerGroup.h>
 #include <ctre/Phoenix.h>
 #include "RobotMap.h"
 
-class Winches : public frc::Subsystem {
+class Winches : public frc2::SubsystemBase {
 public:
     Winches();
     virtual ~Winches();

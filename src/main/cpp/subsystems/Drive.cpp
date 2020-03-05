@@ -7,7 +7,9 @@
 #define SCFR_INVERTED false
 #define SCBR_INVERTED false
 
-Drive::Drive() : Subsystem("Drive") {
+Drive::Drive()
+{
+	SetName( "Drive" );
 	mOldLeftSpeed = 0.0;
 	mOldRightSpeed = 0.0;
 	mVelocityToCommandIntercept[0] = -316.89;

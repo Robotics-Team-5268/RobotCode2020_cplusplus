@@ -1,15 +1,17 @@
 #pragma once
 
-#include <frc/commands/Command.h>
+#include <frc2/command/CommandBase.h>
+#include <frc2/command/CommandHelper.h>
 #include <subsystems/ColorWheel.h>
 
-class SpinColor : public frc::Command {
- public:
+class SpinColor : public frc2::CommandHelper<frc2::CommandBase, SpinColor>
+{
+public:
   SpinColor( ColorWheel* aColorWheel );
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
-  void End() override;
+  void End(bool interrupted) override;
 
  private:
     ColorWheel* mColorWheel;

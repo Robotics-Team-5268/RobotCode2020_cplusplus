@@ -6,10 +6,10 @@ MoveArm::MoveArm( LiftArm* aLiftArm, bool aRaise )
 {
   SetName( "MoveArm" );
 
-  Requires(mLiftArm);
+  AddRequirements(mLiftArm);
 }
 
-void MoveArm::End()
+void MoveArm::End(bool interrupted)
 {
   mLiftArm->setSpeed( 0.0 );
 }

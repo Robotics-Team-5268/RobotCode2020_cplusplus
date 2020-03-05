@@ -1,17 +1,19 @@
 #pragma once
 
-#include <frc/commands/Command.h>
+#include <frc2/command/CommandBase.h>
+#include <frc2/command/CommandHelper.h>
 #include "subsystems/Drive.h"
 
-class Autonomous : public frc::Command {
- public:
+class Autonomous : public frc2::CommandHelper<frc2::CommandBase, Autonomous>
+{
+public:
   Autonomous( Drive* aDrive, int aSelection );
 
   virtual ~Autonomous() {};
-  virtual void End();
-  virtual void Initialize();
-  virtual void Execute();
-  virtual bool IsFinished();
+  void End(bool interrupted) override;
+  virtual void Initialize() override;
+  virtual void Execute() override;
+  virtual bool IsFinished() override;
 
 private:
   Drive* mDrive;

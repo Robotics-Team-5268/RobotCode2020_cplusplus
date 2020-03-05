@@ -6,10 +6,10 @@ MoveFlipper::MoveFlipper( IntakeFlipper* aIntakeFlipper, bool aOpen )
 {
     SetName( "MoveFlipper" );
 
-    Requires( mIntakeFlipper );
+    AddRequirements( mIntakeFlipper );
 }
 
-void MoveFlipper::End()
+void MoveFlipper::End(bool interrupted)
 {
   mIntakeFlipper->setSpeed( 0.0 );
 }

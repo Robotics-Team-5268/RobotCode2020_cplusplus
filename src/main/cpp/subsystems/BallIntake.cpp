@@ -1,7 +1,8 @@
 #include "subsystems/BallIntake.h"
 
-BallIntake::BallIntake() : Subsystem("BallIntake")
+BallIntake::BallIntake()
 {
+    SetName( "BallIntake" );
     mLowerSpeedController.SetInverted( true );
 }
 

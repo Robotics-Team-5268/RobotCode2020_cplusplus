@@ -1,11 +1,11 @@
 #pragma once
 
-#include <frc/commands/Subsystem.h>
+#include <frc2/command/SubsystemBase.h>
 #include <frc/VictorSP.h>
 #include <ctre/Phoenix.h>
 #include "RobotMap.h"
 
-class BallIntake : public frc::Subsystem {
+class BallIntake : public frc2::SubsystemBase {
 public:
     BallIntake();
     virtual ~BallIntake();

@@ -11,7 +11,7 @@ SpinRotations::SpinRotations( ColorWheel* aColorWheel, int aNumRotations )
     , mColorChangeCount( 0 )
 {
     SetName("SpinRotations");
-    Requires( mColorWheel );
+    AddRequirements( mColorWheel );
 }
 
 void SpinRotations::Initialize()
@@ -64,7 +64,7 @@ bool SpinRotations::IsFinished()
     return( mColorChangeCount >= mNumRotations * ColorsPerRotation ) ;
 }
 
-void SpinRotations::End()
+void SpinRotations::End(bool interrupted)
 {
     mColorWheel->spin( 0.0 );
 }

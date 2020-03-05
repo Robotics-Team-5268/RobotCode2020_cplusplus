@@ -4,7 +4,7 @@
 #include "subsystems/Drive.h"
 #include "Vision.hpp"
 
-#include <frc/commands/Scheduler.h>
+#include <frc2/command/CommandScheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
 static std::unique_ptr<Vision> vision;
@@ -23,19 +23,19 @@ void Robot::RobotPeriodic() {}
 
 void Robot::DisabledInit() {}
 
-void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
+void Robot::DisabledPeriodic() { frc2::CommandScheduler::GetInstance().Run(); }
 
 void Robot::AutonomousInit()
 {
     mAutonomousCommand = mRobotContainer.GetAutonomousCommand();
     if( mAutonomousCommand != nullptr )
     {
-        mAutonomousCommand->Start();
+        mAutonomousCommand->Schedule();
     }
 }
 
 void Robot::AutonomousPeriodic() { 
-    frc::Scheduler::GetInstance()->Run();
+    frc2::CommandScheduler::GetInstance().Run();
     AddSmartDashboardItems();
 }
 
@@ -55,7 +55,7 @@ void Robot::TeleopInit()
 }
 
 void Robot::TeleopPeriodic() { 
-    frc::Scheduler::GetInstance()->Run(); 
+    frc2::CommandScheduler::GetInstance().Run();
     AddSmartDashboardItems();
 }
 

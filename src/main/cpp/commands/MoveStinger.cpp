@@ -5,13 +5,14 @@ MoveStinger::MoveStinger( Pneumatics* aPneumatics, frc::DoubleSolenoid::Value aV
     , mValue( aValue )
 {
     SetName( "MoveStinger" );
-    Requires( mPneumatics );
+    AddRequirements( mPneumatics );
 }
 
 void MoveStinger::Initialize()
 {
+    // TODO: Figure out timeouts
     // We want this command to run for 200 ms
-    SetTimeout( 0.2 );
+    //WithTimeout( 0.2 );
 }
 
 void MoveStinger::Execute() {
@@ -28,7 +29,7 @@ bool MoveStinger::IsFinished() {
     return true; 
 }
 
-void MoveStinger::End()
+void MoveStinger::End(bool interrupted)
 {
     mPneumatics->StingerOff();
 }

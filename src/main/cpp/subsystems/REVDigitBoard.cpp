@@ -6,12 +6,14 @@
 #include <string.h>
 #include <cctype>
 
-REVDigitBoard::REVDigitBoard() : frc::Subsystem("REVDigitBoard")
-		, mI2c( frc::I2C::kMXP, 0x70 )
+REVDigitBoard::REVDigitBoard()
+		: mI2c( frc::I2C::kMXP, 0x70 )
 		, mButtonA( 19 )
 		, mButtonB( 20 )
 		, mPotentiometer( 3 )
 	{
+		SetName( "REVDigitBoard" );
+
 		byte osc;
 	 	byte blink;
 	 	byte bright;
