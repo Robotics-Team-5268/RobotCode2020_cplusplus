@@ -12,7 +12,7 @@
 #endif
 #include "OI.h"
 
-class Commands
+class RobotContainer
 {
  public:
   static void init();

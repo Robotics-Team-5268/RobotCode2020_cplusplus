@@ -2,7 +2,7 @@
 
 #include "RobotConfig.h"
 #include "subsystems/Drive.h"
-#include "Commands.h"
+#include "RobotContainer.h"
 #include "Vision.hpp"
 
 #include <frc2/command/CommandScheduler.h>
@@ -16,7 +16,7 @@ static std::unique_ptr<frc::Relay> cameraRelay;
 static std::unique_ptr<Vision> vision;
 
 void Robot::RobotInit() {
-    Commands::init();
+    RobotContainer::init();
     const int CameraRelayChannel = 3;
     cameraRelay.reset( new frc::Relay( CameraRelayChannel ) );
     cameraRelay->Set( frc::Relay::kForward );
@@ -24,9 +24,9 @@ void Robot::RobotInit() {
     vision.reset( new Vision() );
 
 	#if( GYRO_SUPPORT )
-		Commands::drive->calibrateGyro();
+		RobotContainer::drive->calibrateGyro();
 	#endif
-	Commands::drive->safetyOff();
+	RobotContainer::drive->safetyOff();
 }
 
 void Robot::RobotPeriodic() {}
@@ -48,9 +48,9 @@ void Robot::AutonomousPeriodic() {
 void Robot::TeleopInit() {
 	//frc::SmartDashboard::PutNumber("breakpoint", 200);
 	#if( GYRO_SUPPORT )
-		Commands::drive->resetGyro();
+		RobotContainer::drive->resetGyro();
 	#endif
-	Commands::drive->setMotors(0.0, 0.0);
+	RobotContainer::drive->setMotors(0.0, 0.0);
 }
 
 void Robot::TeleopPeriodic() { 
@@ -62,11 +62,11 @@ void Robot::TestPeriodic() {}
 
 void Robot::AddSmartDashboardItems() {
     #if( PNEUMATICS_SUPPORT )
-        frc::SmartDashboard::PutValue("Solenoid Value", Commands::pneumatics->getValue())
+        frc::SmartDashboard::PutValue("Solenoid Value", RobotContainer::pneumatics->getValue())
     #endif
     #if( GYRO_SUPPORT )
-        frc::SmartDashboard::PutNumber("Gyro Angle", Commands::drive->getGyroAngle());
-        frc::SmartDashboard::PutNumber("Gyro Rate", Commands::drive->getGyroRate());
+        frc::SmartDashboard::PutNumber("Gyro Angle", RobotContainer::drive->getGyroAngle());
+        frc::SmartDashboard::PutNumber("Gyro Rate", RobotContainer::drive->getGyroRate());
     #endif
 }
 

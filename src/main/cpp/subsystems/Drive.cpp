@@ -1,6 +1,6 @@
 #include "subsystems/Drive.h"
 
-#include "Commands.h"
+#include "RobotContainer.h"
 #include <frc/smartDashBoard/SmartDashBoard.h>
 
 #define SCFL_INVERTED false
@@ -28,8 +28,8 @@ Drive::Drive() : frc2::SubsystemBase() {
 }
 
 void Drive::takeInput() {
-	float leftSpeed = -Commands::oi->getDriverJoystick()->GetRawAxis(1);
-	float rightSpeed = -Commands::oi->getDriverJoystick()->GetRawAxis(5);
+	float leftSpeed = -RobotContainer::oi->getDriverJoystick()->GetRawAxis(1);
+	float rightSpeed = -RobotContainer::oi->getDriverJoystick()->GetRawAxis(5);
 
 	if (leftSpeed > oldLeftSpeed + MAX_CHANGE) leftSpeed = oldLeftSpeed + MAX_CHANGE;
 	else if (leftSpeed < oldLeftSpeed - MAX_CHANGE) leftSpeed = oldLeftSpeed - MAX_CHANGE;

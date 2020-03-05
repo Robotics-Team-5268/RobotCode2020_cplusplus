@@ -1,9 +1,9 @@
 #include "commands/DriveWithJoystick.h"
 
-#include "Commands.h"
+#include "RobotContainer.h"
 
 DriveWithJoystick::DriveWithJoystick() {
-  AddRequirements( Commands::drive.get()) ;
+  AddRequirements( RobotContainer::drive.get()) ;
 
   SetName( "DriveWithJoystick" );
 }
@@ -11,9 +11,9 @@ DriveWithJoystick::DriveWithJoystick() {
 void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
-  Commands::drive->setMotors(
-    -Commands::oi->getDriverJoystick()->GetRawAxis(1) ,
-	  -Commands::oi->getDriverJoystick()->GetRawAxis(5)
+  RobotContainer::drive->setMotors(
+    -RobotContainer::oi->getDriverJoystick()->GetRawAxis(1) ,
+	  -RobotContainer::oi->getDriverJoystick()->GetRawAxis(5)
     // 0.0,0.0
   );
 }

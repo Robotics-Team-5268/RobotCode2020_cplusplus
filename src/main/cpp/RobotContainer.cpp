@@ -1,15 +1,15 @@
-#include "Commands.h"
+#include "RobotContainer.h"
 
 #include "commands/DriveWithJoystick.h"
 
-std::unique_ptr<ColorWheel> Commands::colorWheel;
-std::unique_ptr<Drive> Commands::drive;
-std::unique_ptr<OI> Commands::oi;
+std::unique_ptr<ColorWheel> RobotContainer::colorWheel;
+std::unique_ptr<Drive> RobotContainer::drive;
+std::unique_ptr<OI> RobotContainer::oi;
 #if( PNEUMATICS_SUPPORT )
-    std::unique_ptr<Pneumatics> Commands::pneumatics;
+    std::unique_ptr<Pneumatics> RobotContainer::pneumatics;
 #endif
 
-void Commands::init() {
+void RobotContainer::init() {
     colorWheel.reset( new ColorWheel() );
     drive.reset(new Drive());
     drive->SetDefaultCommand( DriveWithJoystick());
