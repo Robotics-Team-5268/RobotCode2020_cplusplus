@@ -12,8 +12,8 @@ void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
   RobotContainer::drive->setMotors(
-    -RobotContainer::oi->getDriverJoystick()->GetRawAxis(1) * 0.4,
-	  -RobotContainer::oi->getDriverJoystick()->GetRawAxis(5) * 0.4
+    -RobotContainer::getDriverJoystick()->GetRawAxis(1) * 0.4,
+	  -RobotContainer::getDriverJoystick()->GetRawAxis(5) * 0.4
   );
 }
 

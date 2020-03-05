@@ -1,6 +1,10 @@
 #pragma once
 
 #include <memory>
+#include <vector>
+
+#include <frc/Joystick.h>
+#include <frc/buttons/JoystickButton.h>
 
 #include "subsystems/BallIntake.h"
 #include "subsystems/ColorWheel.h"
@@ -9,10 +13,10 @@
 #include "subsystems/IntakeFlipper.h"
 #include "subsystems/Pneumatics.h"
 #include "subsystems/Winches.h"
-#include "OI.h"
 
-class RobotContainer {
- public:
+class RobotContainer
+{
+public:
   RobotContainer();
 
   static std::unique_ptr<BallIntake> ballIntake;
@@ -22,5 +26,14 @@ class RobotContainer {
   static std::unique_ptr<LiftArm> liftArm;
   static std::unique_ptr<Pneumatics> pneumatics;
   static std::unique_ptr<Winches> winches;
-  static std::unique_ptr<OI> oi;
+
+  static std::shared_ptr<frc::Joystick> getDriverJoystick();
+
+private:
+  void ConfigureButtonBindings();
+
+  static std::shared_ptr<frc::Joystick> driverJoystick;
+  std::shared_ptr<frc::Joystick> mechanismsJoystick;
+  std::vector<frc::JoystickButton*> driverBtns;
+  std::vector<frc::JoystickButton*> mechanismsBtns;  
 };
