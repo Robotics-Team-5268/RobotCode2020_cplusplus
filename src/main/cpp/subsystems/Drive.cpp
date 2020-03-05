@@ -1,5 +1,4 @@
 #include "subsystems/Drive.h"
-#include "commands/DriveWithJoystick.h"
 
 #include <frc/smartDashBoard/SmartDashBoard.h>
 
@@ -23,10 +22,8 @@ Drive::Drive() : Subsystem("Drive") {
 	mSpeedControllerBL.SetInverted(SCBL_INVERTED);
 	mSpeedControllerFR.SetInverted(SCFR_INVERTED);
 	mSpeedControllerBR.SetInverted(SCBR_INVERTED);
-}
 
-void Drive::InitDefaultCommand() {
-  SetDefaultCommand(new DriveWithJoystick());
+	mDiffDrive.SetSafetyEnabled(false);
 }
 
 void Drive::setMotors(float aLeftSpeed, float aRightSpeed) {

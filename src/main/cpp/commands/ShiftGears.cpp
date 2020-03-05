@@ -1,11 +1,10 @@
 #include "commands/ShiftGears.h"
 
-#include "RobotContainer.h"
-
-ShiftGears::ShiftGears(frc::DoubleSolenoid::Value aValue)
+ShiftGears::ShiftGears( Pneumatics* aPneumatics, frc::DoubleSolenoid::Value aValue )
+    : mPneumatics( aPneumatics )
 {
     SetName("ShiftGears");
-    Requires(RobotContainer::pneumatics.get());
+    Requires( mPneumatics );
     mValue = aValue;
 }
 
@@ -17,11 +16,11 @@ void ShiftGears::Initialize()
 
 void ShiftGears::Execute() {
     if (mValue == frc::DoubleSolenoid::kForward) {
-        RobotContainer::pneumatics->ShiftForward();
+        mPneumatics->ShiftForward();
     } else if (mValue == frc::DoubleSolenoid::kReverse){
-        RobotContainer::pneumatics->ShiftReverse();
+        mPneumatics->ShiftReverse();
     } else {
-        RobotContainer::pneumatics->ShiftOff();
+        mPneumatics->ShiftOff();
     }
 }
 
@@ -31,5 +30,5 @@ bool ShiftGears::IsFinished() {
 
 void ShiftGears::End()
 {
-    RobotContainer::pneumatics->ShiftOff();
+    mPneumatics->ShiftOff();
 }

@@ -2,7 +2,6 @@
 
 #include "RobotConfig.h"
 #include "subsystems/Drive.h"
-#include "RobotContainer.h"
 #include "Vision.hpp"
 
 #include <frc/commands/Scheduler.h>
@@ -18,11 +17,6 @@ Robot::Robot()
 
 void Robot::RobotInit() {
     vision.reset( new Vision() );
-
-	#if( GYRO_SUPPORT )
-		RobotContainer::drive->calibrateGyro();
-	#endif
-	RobotContainer::drive->safetyOff();
 }
 
 void Robot::RobotPeriodic() {}
@@ -58,7 +52,6 @@ void Robot::TeleopInit()
 	#if( GYRO_SUPPORT )
 		RobotContainer::drive->resetGyro();
 	#endif
-	RobotContainer::drive->setMotors(0.0, 0.0);
 }
 
 void Robot::TeleopPeriodic() { 

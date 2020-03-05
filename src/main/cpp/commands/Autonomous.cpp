@@ -1,18 +1,17 @@
 #include "commands/Autonomous.h"
 
-Autonomous::Autonomous(int aSelection)
+Autonomous::Autonomous( Drive* aDrive, int aSelection )
+  : mDrive( aDrive )
 {
   SetName( "Autonomous" );
 
-  //std::string gameData;
-  //gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-  //"Wes is Stupid and dumb" -Wes
+  Requires( mDrive );
 
 }
 
 void Autonomous::End()
 {
-
+  mDrive->setMotors(0.0, 0.0);
 }
 
 void Autonomous::Initialize()

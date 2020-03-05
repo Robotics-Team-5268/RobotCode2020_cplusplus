@@ -1,29 +1,28 @@
 #include "commands/MoveFlipper.h"
 
-#include "RobotContainer.h"
-
-MoveFlipper::MoveFlipper( bool aOpen )
+MoveFlipper::MoveFlipper( IntakeFlipper* aIntakeFlipper, bool aOpen )
+  : mIntakeFlipper( aIntakeFlipper )
+  , mOpen( aOpen )
 {
     SetName( "MoveFlipper" );
 
-    Requires(RobotContainer::intakeFlipper.get());
-    mOpen = aOpen;
+    Requires( mIntakeFlipper );
 }
 
 void MoveFlipper::End()
 {
-  RobotContainer::intakeFlipper->setSpeed( 0.0 );
+  mIntakeFlipper->setSpeed( 0.0 );
 }
 
 void MoveFlipper::Execute()
 {
   if( mOpen )
   {
-    RobotContainer::intakeFlipper->setSpeed( 0.4 );
+    mIntakeFlipper->setSpeed( 0.4 );
   }
   else
   {
-    RobotContainer::intakeFlipper->setSpeed( -0.4 );
+    mIntakeFlipper->setSpeed( -0.4 );
   }
 }
 
@@ -41,14 +40,14 @@ bool MoveFlipper::IsFinished()
      // Value taken from REV-11-1271 datasheet
      // const double pulsesPerRevolution = 8192.0;
      // 850 pulses * 360 degrees / 8192 pulses pre revolution ~=  37 degrees
-    if( RobotContainer::intakeFlipper->getEncoderValue() >= 850 )
+    if( mIntakeFlipper->getEncoderValue() >= 850 )
     {
       finished = true;
     }
   }
   else
   {
-    if( RobotContainer::intakeFlipper->getEncoderValue() <= 0 )
+    if( mIntakeFlipper->getEncoderValue() <= 0 )
     {
       finished = true;
     }

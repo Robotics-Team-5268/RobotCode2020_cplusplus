@@ -1,12 +1,11 @@
 #include "commands/Telescope.h"
 
-#include "RobotContainer.h"
-
-Telescope::Telescope( bool aExtend )
-    : mExtend( aExtend )
+Telescope::Telescope( Winches* aWinches, bool aExtend )
+    : mWinches( aWinches )
+    , mExtend( aExtend )
 {
     SetName("Telescope");
-    Requires( RobotContainer::winches.get() );
+    Requires( aWinches );
 }
 
 void Telescope::Initialize() {}
@@ -14,7 +13,7 @@ void Telescope::Initialize() {}
 void Telescope::Execute() {
 
     const double percentOutput = mExtend ? 0.3 : -0.3;
-    RobotContainer::winches->telescope( percentOutput );
+    mWinches->telescope( percentOutput );
 }
 
 bool Telescope::IsFinished() { 
@@ -23,5 +22,5 @@ bool Telescope::IsFinished() {
 
 void Telescope::End()
 {
-    RobotContainer::winches->telescope( 0.0 );
+    mWinches->telescope( 0.0 );
 }

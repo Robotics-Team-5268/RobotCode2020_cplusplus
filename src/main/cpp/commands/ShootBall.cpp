@@ -1,17 +1,16 @@
 #include "commands/ShootBall.h"
 
-#include "RobotContainer.h"
-
-ShootBall::ShootBall()
+ShootBall::ShootBall( BallIntake* aBallIntake )
+    : mBallIntake( aBallIntake )
 {
     SetName("ShootBall");
-    Requires( RobotContainer::ballIntake.get() );
+    Requires( mBallIntake );
 }
 
 void ShootBall::Initialize() {}
 
 void ShootBall::Execute() {
-    RobotContainer::ballIntake->setUpperSpeed( 0.8 );
+    mBallIntake->setUpperSpeed( 0.8 );
 }
 
 bool ShootBall::IsFinished() { 
@@ -20,5 +19,5 @@ bool ShootBall::IsFinished() {
 
 void ShootBall::End()
 {
-    RobotContainer::ballIntake->setUpperSpeed( 0.0 );
+    mBallIntake->setUpperSpeed( 0.0 );
 }

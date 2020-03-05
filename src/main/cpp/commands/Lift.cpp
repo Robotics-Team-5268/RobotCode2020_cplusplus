@@ -1,12 +1,11 @@
 #include "commands/Lift.h"
 
-#include "RobotContainer.h"
-
-Lift::Lift( bool aRaise )
-    : mRaise( aRaise )
+Lift::Lift( Winches* aWinches, bool aRaise )
+    : mWinches( aWinches )
+    , mRaise( aRaise )
 {
     SetName( "Lift" );
-    Requires( RobotContainer::winches.get() );
+    Requires( mWinches );
 }
 
 void Lift::Initialize() {}
@@ -14,7 +13,7 @@ void Lift::Initialize() {}
 void Lift::Execute() {
 
     const double percentOutput = mRaise ? 0.3 : -0.3;
-    RobotContainer::winches->lift( percentOutput );
+    mWinches->lift( percentOutput );
 }
 
 bool Lift::IsFinished() { 
@@ -23,5 +22,5 @@ bool Lift::IsFinished() {
 
 void Lift::End()
 {
-    RobotContainer::winches->lift( 0.0 );
+    mWinches->lift( 0.0 );
 }

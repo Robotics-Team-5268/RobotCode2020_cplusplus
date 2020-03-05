@@ -1,12 +1,11 @@
 #include "commands/MoveStinger.h"
 
-#include "RobotContainer.h"
-
-MoveStinger::MoveStinger(frc::DoubleSolenoid::Value aValue)
+MoveStinger::MoveStinger( Pneumatics* aPneumatics, frc::DoubleSolenoid::Value aValue)
+    : mPneumatics( aPneumatics )
+    , mValue( aValue )
 {
     SetName( "MoveStinger" );
-    Requires(RobotContainer::pneumatics.get());
-    mValue = aValue;
+    Requires( mPneumatics );
 }
 
 void MoveStinger::Initialize()
@@ -17,11 +16,11 @@ void MoveStinger::Initialize()
 
 void MoveStinger::Execute() {
     if (mValue == frc::DoubleSolenoid::kForward) {
-        RobotContainer::pneumatics->StingerForward();
+        mPneumatics->StingerForward();
     } else if (mValue == frc::DoubleSolenoid::kReverse){
-        RobotContainer::pneumatics->StingerReverse();
+        mPneumatics->StingerReverse();
     } else {
-        RobotContainer::pneumatics->StingerOff();
+        mPneumatics->StingerOff();
     }
 }
 
@@ -31,5 +30,5 @@ bool MoveStinger::IsFinished() {
 
 void MoveStinger::End()
 {
-    RobotContainer::pneumatics->StingerOff();
+    mPneumatics->StingerOff();
 }

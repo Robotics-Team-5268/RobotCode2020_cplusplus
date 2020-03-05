@@ -1,19 +1,19 @@
 #include "commands/DriveWithJoystick.h"
 
-#include "RobotContainer.h"
-
-DriveWithJoystick::DriveWithJoystick()
+DriveWithJoystick::DriveWithJoystick( Drive* aDrive, const std::shared_ptr<frc::Joystick>& aJoystick )
+  : mDrive( aDrive )
+  , mJoystick( aJoystick )
 {
   SetName( "DriveWithJoystick" );
-  Requires(RobotContainer::drive.get());
+  Requires( mDrive );
 }
 
 void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
-  RobotContainer::drive->setMotors(
-    -RobotContainer::getDriverJoystick()->GetRawAxis(1) * 0.4,
-	  -RobotContainer::getDriverJoystick()->GetRawAxis(5) * 0.4
+  mDrive->setMotors(
+    -mJoystick->GetRawAxis(1) * 0.4,
+	  -mJoystick->GetRawAxis(5) * 0.4
   );
 }
 

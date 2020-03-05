@@ -24,7 +24,6 @@ class REVDigitBoard: public frc::Subsystem {
 	 */
 public:
 	REVDigitBoard();
-	void InitDefaultCommand();
 	void clear();
 	bool getButtonA();
 	bool getButtonB();

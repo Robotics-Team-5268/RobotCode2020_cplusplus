@@ -3,14 +3,13 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <subsystems/ColorWheel.h>
 
-#include "RobotContainer.h"
-
-SpinColor::SpinColor()
-    : mFmsColor( ColorWheel::NO_MATCH )
+SpinColor::SpinColor( ColorWheel* aColorWheel )
+    : mColorWheel( aColorWheel )
+    , mFmsColor( ColorWheel::NO_MATCH )
     , mColorMatched( false )
 {
     SetName( "SpinColor" );
-    Requires( RobotContainer::colorWheel.get() );
+    Requires( mColorWheel );
 }
 
 void SpinColor::Initialize()
@@ -71,20 +70,20 @@ void SpinColor::Initialize()
 
 void SpinColor::Execute()
 {
-    ColorWheel::ColorReading colorReading = RobotContainer::colorWheel->readColorSensor();
+    ColorWheel::ColorReading colorReading = mColorWheel->readColorSensor();
 
     if( colorReading.matchedColor == mFmsColor ||
         ColorWheel::NO_MATCH == mFmsColor )
     {
         // If we matched color the FMS color or the field management system hasn't given us a color yet,
         // stop spinning and end this command
-        RobotContainer::colorWheel->spin( 0.0 );
+        mColorWheel->spin( 0.0 );
         mColorMatched = true;
     }
     else
     {
         // For now, spin at a slow speed until we can prove reliable at higher speed
-        RobotContainer::colorWheel->spin( 0.2 );
+        mColorWheel->spin( 0.2 );
     }
 
     std::string colorString = "No Match";

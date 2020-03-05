@@ -103,8 +103,6 @@ REVDigitBoard::REVDigitBoard() : frc::Subsystem("REVDigitBoard")
 		mCharmap[' '] = 36;
 	}
 
-	void REVDigitBoard::InitDefaultCommand() {}
-
 	void REVDigitBoard::display( const std::string& aString) { // only displays first 4 chars
 		byte charz[4] = {36,36,36,36};
 

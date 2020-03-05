@@ -35,9 +35,7 @@ class Drive : public frc::Subsystem {
     //std::ofstream fout;
  public:
 	Drive();
-	void InitDefaultCommand() override;
 	virtual void setMotors(float aLeftSpeed, float aRightSpeed);
-	virtual void safetyOff() {mDiffDrive.SetSafetyEnabled(false);}
 	#if( GYRO_SUPPORT )
 	    frc::AnalogGyro* getGyro();
 	    float getGyroAngle();
