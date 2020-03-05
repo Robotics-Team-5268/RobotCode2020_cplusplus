@@ -2,9 +2,12 @@
 
 #include "RobotContainer.h"
 
-MoveArm::MoveArm( bool aRaise ) : RobotContainer("MoveArm") {
-    Requires(RobotContainer::liftArm.get());
-    mRaise = aRaise;
+MoveArm::MoveArm( bool aRaise )
+{
+  SetName( "MoveArm" );
+
+  Requires(RobotContainer::liftArm.get());
+  mRaise = aRaise;
 }
 
 void MoveArm::End()

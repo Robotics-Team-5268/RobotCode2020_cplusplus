@@ -2,7 +2,9 @@
 
 #include "RobotContainer.h"
 
-MoveStinger::MoveStinger(frc::DoubleSolenoid::Value aValue) : RobotContainer("MoveStinger") {
+MoveStinger::MoveStinger(frc::DoubleSolenoid::Value aValue)
+{
+    SetName( "MoveStinger" );
     Requires(RobotContainer::pneumatics.get());
     mValue = aValue;
 }

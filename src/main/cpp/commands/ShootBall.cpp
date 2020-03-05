@@ -1,6 +1,8 @@
 #include "commands/ShootBall.h"
 
-ShootBall::ShootBall() : RobotContainer("ShootBall") {
+ShootBall::ShootBall()
+{
+    SetName("ShootBall");
     Requires( ballIntake.get() );
 }
 

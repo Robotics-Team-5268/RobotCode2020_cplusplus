@@ -1,9 +1,9 @@
 #include "commands/Lift.h"
 
 Lift::Lift( bool aRaise )
-    : RobotContainer("Lift")
-    , mRaise( aRaise )    
+    : mRaise( aRaise )
 {
+    SetName( "Lift" );
     Requires( winches.get() );
 }
 

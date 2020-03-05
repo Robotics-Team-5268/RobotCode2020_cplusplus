@@ -1,9 +1,9 @@
 #include "commands/Telescope.h"
 
 Telescope::Telescope( bool aExtend )
-    : RobotContainer("Telescope")
-    , mExtend( aExtend )    
+    : mExtend( aExtend )
 {
+    SetName("Telescope");
     Requires( winches.get() );
 }
 

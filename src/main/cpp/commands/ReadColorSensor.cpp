@@ -3,7 +3,9 @@
 #include <subsystems/ColorWheel.h>
 
 
-ReadColorSensor::ReadColorSensor() : RobotContainer("ReadColorSensor") {
+ReadColorSensor::ReadColorSensor()
+{
+    SetName( "ReadColorSensor" );
     Requires( colorWheel.get() );
 }
 

@@ -5,11 +5,11 @@
 static const int ColorsPerRotation = 8;
 
 SpinRotations::SpinRotations( int aNumRotations )
-    : RobotContainer("SpinRotations") 
-    , mNumRotations( aNumRotations )
+    : mNumRotations( aNumRotations )
     , mLastMatchedColor( ColorWheel::NO_MATCH )
     , mColorChangeCount( 0 )
 {
+    SetName("SpinRotations");
     Requires( colorWheel.get() );
 }
 

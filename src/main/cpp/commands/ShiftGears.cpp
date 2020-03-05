@@ -2,7 +2,9 @@
 
 #include "RobotContainer.h"
 
-ShiftGears::ShiftGears(frc::DoubleSolenoid::Value aValue) : RobotContainer("ShiftGears") {
+ShiftGears::ShiftGears(frc::DoubleSolenoid::Value aValue)
+{
+    SetName("ShiftGears");
     Requires(RobotContainer::pneumatics.get());
     mValue = aValue;
 }

@@ -1,7 +1,8 @@
 #include "commands/DriveStraightAutonomous.h"
 
-DriveStraightAutonomous::DriveStraightAutonomous() : RobotContainer("DriveStraightDistance")
+DriveStraightAutonomous::DriveStraightAutonomous()
 {
+    SetName( "DriveStraightDistance" );
     Requires( drive.get() );
 }
 

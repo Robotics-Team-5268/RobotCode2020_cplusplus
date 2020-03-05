@@ -4,10 +4,10 @@
 #include <subsystems/ColorWheel.h>
 
 SpinColor::SpinColor()
-    : RobotContainer("SpinColor")
-    , mFmsColor( ColorWheel::NO_MATCH )
+    : mFmsColor( ColorWheel::NO_MATCH )
     , mColorMatched( false )
 {
+    SetName( "SpinColor" );
     Requires( colorWheel.get() );
 }
 

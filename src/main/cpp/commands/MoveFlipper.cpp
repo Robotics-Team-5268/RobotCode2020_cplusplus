@@ -2,7 +2,10 @@
 
 #include "RobotContainer.h"
 
-MoveFlipper::MoveFlipper( bool aOpen ) : RobotContainer("MoveFlipper") {
+MoveFlipper::MoveFlipper( bool aOpen )
+{
+    SetName( "MoveFlipper" );
+
     Requires(RobotContainer::intakeFlipper.get());
     mOpen = aOpen;
 }

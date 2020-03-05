@@ -1,6 +1,8 @@
 #include "commands/DriveWithJoystick.h"
 
-DriveWithJoystick::DriveWithJoystick() : RobotContainer("DriveWithJoystick") {
+DriveWithJoystick::DriveWithJoystick()
+{
+  SetName( "DriveWithJoystick" );
   Requires(drive.get());
 }
 
