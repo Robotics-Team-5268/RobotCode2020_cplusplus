@@ -1,8 +1,8 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-class ReadColorSensor : public CommandBase {
+class ReadColorSensor : public RobotContainer {
  public:
   ReadColorSensor();
   void Initialize() override;

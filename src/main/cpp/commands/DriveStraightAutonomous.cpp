@@ -1,6 +1,6 @@
 #include "commands/DriveStraightAutonomous.h"
 
-DriveStraightAutonomous::DriveStraightAutonomous() : CommandBase("DriveStraightDistance")
+DriveStraightAutonomous::DriveStraightAutonomous() : RobotContainer("DriveStraightDistance")
 {
     Requires( drive.get() );
 }

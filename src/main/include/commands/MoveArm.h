@@ -1,8 +1,8 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-class MoveArm : public CommandBase {
+class MoveArm : public RobotContainer {
    public:
       MoveArm( bool aRaise );
       void End() override;

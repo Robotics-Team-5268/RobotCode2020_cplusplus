@@ -1,9 +1,9 @@
 #include "commands/MoveArm.h"
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-MoveArm::MoveArm( bool aRaise ) : CommandBase("MoveArm") {
-    Requires(CommandBase::liftArm.get());
+MoveArm::MoveArm( bool aRaise ) : RobotContainer("MoveArm") {
+    Requires(RobotContainer::liftArm.get());
     mRaise = aRaise;
 }
 

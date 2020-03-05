@@ -1,9 +1,9 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 #include <subsystems/ColorWheel.h>
 
-class SpinRotations : public CommandBase {
+class SpinRotations : public RobotContainer {
  public:
   SpinRotations
     (

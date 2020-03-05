@@ -1,9 +1,9 @@
 #include "commands/ShiftGears.h"
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-ShiftGears::ShiftGears(frc::DoubleSolenoid::Value aValue) : CommandBase("ShiftGears") {
-    Requires(CommandBase::pneumatics.get());
+ShiftGears::ShiftGears(frc::DoubleSolenoid::Value aValue) : RobotContainer("ShiftGears") {
+    Requires(RobotContainer::pneumatics.get());
     mValue = aValue;
 }
 
@@ -15,11 +15,11 @@ void ShiftGears::Initialize()
 
 void ShiftGears::Execute() {
     if (mValue == frc::DoubleSolenoid::kForward) {
-        CommandBase::pneumatics->ShiftForward();
+        RobotContainer::pneumatics->ShiftForward();
     } else if (mValue == frc::DoubleSolenoid::kReverse){
-        CommandBase::pneumatics->ShiftReverse();
+        RobotContainer::pneumatics->ShiftReverse();
     } else {
-        CommandBase::pneumatics->ShiftOff();
+        RobotContainer::pneumatics->ShiftOff();
     }
 }
 
@@ -29,7 +29,7 @@ bool ShiftGears::IsFinished() {
 
 void ShiftGears::End()
 {
-    CommandBase::pneumatics->ShiftOff();
+    RobotContainer::pneumatics->ShiftOff();
 }
 
 void ShiftGears::Interrupted() {}

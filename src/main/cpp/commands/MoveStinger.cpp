@@ -1,9 +1,9 @@
 #include "commands/MoveStinger.h"
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-MoveStinger::MoveStinger(frc::DoubleSolenoid::Value aValue) : CommandBase("MoveStinger") {
-    Requires(CommandBase::pneumatics.get());
+MoveStinger::MoveStinger(frc::DoubleSolenoid::Value aValue) : RobotContainer("MoveStinger") {
+    Requires(RobotContainer::pneumatics.get());
     mValue = aValue;
 }
 
@@ -15,11 +15,11 @@ void MoveStinger::Initialize()
 
 void MoveStinger::Execute() {
     if (mValue == frc::DoubleSolenoid::kForward) {
-        CommandBase::pneumatics->StingerForward();
+        RobotContainer::pneumatics->StingerForward();
     } else if (mValue == frc::DoubleSolenoid::kReverse){
-        CommandBase::pneumatics->StingerReverse();
+        RobotContainer::pneumatics->StingerReverse();
     } else {
-        CommandBase::pneumatics->StingerOff();
+        RobotContainer::pneumatics->StingerOff();
     }
 }
 
@@ -29,7 +29,7 @@ bool MoveStinger::IsFinished() {
 
 void MoveStinger::End()
 {
-    CommandBase::pneumatics->StingerOff();
+    RobotContainer::pneumatics->StingerOff();
 }
 
 void MoveStinger::Interrupted() {}

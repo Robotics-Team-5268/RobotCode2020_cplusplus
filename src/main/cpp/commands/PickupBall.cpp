@@ -1,6 +1,6 @@
 #include "commands/PickupBall.h"
 
-PickupBall::PickupBall() : CommandBase("PickupBall") {
+PickupBall::PickupBall() : RobotContainer("PickupBall") {
     Requires( ballIntake.get() );
 }
 

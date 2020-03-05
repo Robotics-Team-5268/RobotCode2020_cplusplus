@@ -4,7 +4,7 @@
 #include <subsystems/ColorWheel.h>
 
 SpinColor::SpinColor()
-    : CommandBase("SpinColor")
+    : RobotContainer("SpinColor")
     , mFmsColor( ColorWheel::NO_MATCH )
     , mColorMatched( false )
 {

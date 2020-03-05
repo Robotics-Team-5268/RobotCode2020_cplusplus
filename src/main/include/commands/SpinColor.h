@@ -1,9 +1,9 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 #include <subsystems/ColorWheel.h>
 
-class SpinColor : public CommandBase {
+class SpinColor : public RobotContainer {
  public:
   SpinColor();
   void Initialize() override;

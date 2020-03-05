@@ -1,8 +1,8 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-class DriveStraightAutonomous : public CommandBase {
+class DriveStraightAutonomous : public RobotContainer {
 public:
     DriveStraightAutonomous();
 

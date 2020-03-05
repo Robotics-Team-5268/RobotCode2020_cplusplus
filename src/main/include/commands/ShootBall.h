@@ -1,8 +1,8 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-class ShootBall : public CommandBase {
+class ShootBall : public RobotContainer {
  public:
   ShootBall();
   void Initialize() override;

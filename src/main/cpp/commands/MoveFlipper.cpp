@@ -1,9 +1,9 @@
 #include "commands/MoveFlipper.h"
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-MoveFlipper::MoveFlipper( bool aOpen ) : CommandBase("MoveFlipper") {
-    Requires(CommandBase::intakeFlipper.get());
+MoveFlipper::MoveFlipper( bool aOpen ) : RobotContainer("MoveFlipper") {
+    Requires(RobotContainer::intakeFlipper.get());
     mOpen = aOpen;
 }
 

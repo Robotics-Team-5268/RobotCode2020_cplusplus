@@ -14,10 +14,10 @@
 #include "subsystems/Winches.h"
 #include "OI.h"
 
-class CommandBase : public frc::CommandGroup {
+class RobotContainer : public frc::CommandGroup {
  public:
-  CommandBase(const std::string &name);
-  CommandBase();
+  RobotContainer(const std::string &name);
+  RobotContainer();
   static void init();
 
   static std::unique_ptr<BallIntake> ballIntake;

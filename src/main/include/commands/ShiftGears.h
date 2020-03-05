@@ -1,10 +1,10 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
 #include <frc/DoubleSolenoid.h>
 
-class ShiftGears : public CommandBase {
+class ShiftGears : public RobotContainer {
  public:
   ShiftGears(frc::DoubleSolenoid::Value aValue);
   void Initialize() override;

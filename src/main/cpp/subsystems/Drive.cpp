@@ -30,8 +30,8 @@ void Drive::InitDefaultCommand() {
 }
 
 void Drive::takeInput() {
-	float leftSpeed = -CommandBase::oi->getDriverJoystick()->GetRawAxis(1);
-	float rightSpeed = -CommandBase::oi->getDriverJoystick()->GetRawAxis(5);
+	float leftSpeed = -RobotContainer::oi->getDriverJoystick()->GetRawAxis(1);
+	float rightSpeed = -RobotContainer::oi->getDriverJoystick()->GetRawAxis(5);
 
 	if (leftSpeed > mOldLeftSpeed + MAX_CHANGE) leftSpeed = mOldLeftSpeed + MAX_CHANGE;
 	else if (leftSpeed < mOldLeftSpeed - MAX_CHANGE) leftSpeed = mOldLeftSpeed - MAX_CHANGE;

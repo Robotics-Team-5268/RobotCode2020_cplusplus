@@ -1,7 +1,7 @@
 #include "commands/Lift.h"
 
 Lift::Lift( bool aRaise )
-    : CommandBase("Lift")
+    : RobotContainer("Lift")
     , mRaise( aRaise )    
 {
     Requires( winches.get() );

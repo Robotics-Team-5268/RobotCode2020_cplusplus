@@ -5,7 +5,7 @@
 static const int ColorsPerRotation = 8;
 
 SpinRotations::SpinRotations( int aNumRotations )
-    : CommandBase("SpinRotations") 
+    : RobotContainer("SpinRotations") 
     , mNumRotations( aNumRotations )
     , mLastMatchedColor( ColorWheel::NO_MATCH )
     , mColorChangeCount( 0 )

@@ -1,7 +1,7 @@
 #include "commands/Telescope.h"
 
 Telescope::Telescope( bool aExtend )
-    : CommandBase("Telescope")
+    : RobotContainer("Telescope")
     , mExtend( aExtend )    
 {
     Requires( winches.get() );

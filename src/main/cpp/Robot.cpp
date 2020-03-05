@@ -3,7 +3,7 @@
 #include "RobotConfig.h"
 #include "commands/DriveStraightAutonomous.h"
 #include "subsystems/Drive.h"
-#include "CommandBase.h"
+#include "RobotContainer.h"
 #include "Vision.hpp"
 
 #include <frc/commands/Scheduler.h>
@@ -15,14 +15,14 @@ AutonomousChooser Robot::AutoChooser;
 static std::unique_ptr<Vision> vision;
 
 void Robot::RobotInit() {
-    CommandBase::init();
+    RobotContainer::init();
 
     vision.reset( new Vision() );
 
 	#if( GYRO_SUPPORT )
-		CommandBase::drive->calibrateGyro();
+		RobotContainer::drive->calibrateGyro();
 	#endif
-	CommandBase::drive->safetyOff();
+	RobotContainer::drive->safetyOff();
 }
 
 void Robot::RobotPeriodic() {}
@@ -45,9 +45,9 @@ void Robot::AutonomousPeriodic() {
 void Robot::TeleopInit() {
 	//frc::SmartDashboard::PutNumber("breakpoint", 200);
 	#if( GYRO_SUPPORT )
-		CommandBase::drive->resetGyro();
+		RobotContainer::drive->resetGyro();
 	#endif
-	CommandBase::drive->setMotors(0.0, 0.0);
+	RobotContainer::drive->setMotors(0.0, 0.0);
 }
 
 void Robot::TeleopPeriodic() { 
@@ -59,8 +59,8 @@ void Robot::TestPeriodic() {}
 
 void Robot::AddSmartDashboardItems() {
     #if( GYRO_SUPPORT )
-        frc::SmartDashboard::PutNumber("Gyro Angle", CommandBase::drive->getGyroAngle());
-        frc::SmartDashboard::PutNumber("Gyro Rate", CommandBase::drive->getGyroRate());
+        frc::SmartDashboard::PutNumber("Gyro Angle", RobotContainer::drive->getGyroAngle());
+        frc::SmartDashboard::PutNumber("Gyro Rate", RobotContainer::drive->getGyroRate());
     #endif
 }
 

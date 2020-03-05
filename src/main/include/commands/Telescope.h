@@ -1,8 +1,8 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-class Telescope : public CommandBase {
+class Telescope : public RobotContainer {
   public:
     Telescope( bool aExtend );
     void Initialize() override;

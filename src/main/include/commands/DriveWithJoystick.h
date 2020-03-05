@@ -1,8 +1,8 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "RobotContainer.h"
 
-class DriveWithJoystick : public CommandBase {
+class DriveWithJoystick : public RobotContainer {
  public:
   DriveWithJoystick();
   void Initialize() override;
