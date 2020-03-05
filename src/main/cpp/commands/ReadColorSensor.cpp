@@ -53,8 +53,3 @@ void ReadColorSensor::End()
 {
 
 }
-
-void ReadColorSensor::Interrupted()
-{
-
-}

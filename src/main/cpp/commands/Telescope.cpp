@@ -25,8 +25,3 @@ void Telescope::End()
 {
     RobotContainer::winches->telescope( 0.0 );
 }
-
-void Telescope::Interrupted()
-{
-
-}

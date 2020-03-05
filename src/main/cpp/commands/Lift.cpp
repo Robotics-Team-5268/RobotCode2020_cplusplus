@@ -25,8 +25,3 @@ void Lift::End()
 {
     RobotContainer::winches->lift( 0.0 );
 }
-
-void Lift::Interrupted()
-{
-
-}

@@ -10,7 +10,7 @@ class SpinColor : public frc::Command {
   void Execute() override;
   bool IsFinished() override;
   void End() override;
-  void Interrupted() override;
+
  private:
     ColorWheel::MatchedColor mFmsColor; //!< Field management system color
     bool mColorMatched;

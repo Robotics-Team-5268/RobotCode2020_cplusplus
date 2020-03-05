@@ -22,8 +22,3 @@ void ShootBall::End()
 {
     RobotContainer::ballIntake->setUpperSpeed( 0.0 );
 }
-
-void ShootBall::Interrupted()
-{
-
-}

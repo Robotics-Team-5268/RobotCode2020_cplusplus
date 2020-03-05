@@ -33,5 +33,3 @@ void MoveStinger::End()
 {
     RobotContainer::pneumatics->StingerOff();
 }
-
-void MoveStinger::Interrupted() {}

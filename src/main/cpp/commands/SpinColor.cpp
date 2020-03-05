@@ -125,8 +125,3 @@ void SpinColor::End()
 {
 
 }
-
-void SpinColor::Interrupted()
-{
-
-}

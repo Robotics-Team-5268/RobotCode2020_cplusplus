@@ -33,5 +33,3 @@ void ShiftGears::End()
 {
     RobotContainer::pneumatics->ShiftOff();
 }
-
-void ShiftGears::Interrupted() {}

@@ -25,8 +25,3 @@ void PickupBall::End()
     RobotContainer::ballIntake->setLowerSpeed( 0.0 );
     RobotContainer::ballIntake->setUpperSpeed( 0.0 );
 }
-
-void PickupBall::Interrupted()
-{
-
-}

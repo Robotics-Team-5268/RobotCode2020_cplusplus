@@ -20,5 +20,3 @@ void DriveWithJoystick::Execute() {
 bool DriveWithJoystick::IsFinished() { return true; }
 
 void DriveWithJoystick::End() {}
-
-void DriveWithJoystick::Interrupted() {}

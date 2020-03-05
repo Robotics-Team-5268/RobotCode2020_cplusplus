@@ -69,8 +69,3 @@ void SpinRotations::End()
 {
     RobotContainer::colorWheel->spin( 0.0 );
 }
-
-void SpinRotations::Interrupted()
-{
-
-}
