@@ -13,7 +13,7 @@
 
 class RobotContainer {
  public:
-  static void init();
+  RobotContainer();
 
   static std::unique_ptr<BallIntake> ballIntake;
   static std::unique_ptr<ColorWheel> colorWheel;

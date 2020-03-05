@@ -9,8 +9,8 @@ std::unique_ptr<OI> RobotContainer::oi;
 std::unique_ptr<Pneumatics> RobotContainer::pneumatics;
 std::unique_ptr<Winches> RobotContainer::winches;
 
-void RobotContainer::init() {
-
+RobotContainer::RobotContainer()
+{
     ballIntake.reset( new BallIntake() );
     colorWheel.reset( new ColorWheel() );
     drive.reset(new Drive());

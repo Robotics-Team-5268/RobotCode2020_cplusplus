@@ -15,8 +15,6 @@ AutonomousChooser Robot::AutoChooser;
 static std::unique_ptr<Vision> vision;
 
 void Robot::RobotInit() {
-    RobotContainer::init();
-
     vision.reset( new Vision() );
 
 	#if( GYRO_SUPPORT )

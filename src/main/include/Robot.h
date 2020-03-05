@@ -8,13 +8,13 @@
 #include "commands/DriveStraightAutonomous.h"
 #include "AutonomousChooser.h"
 
-
-
-class Robot : public frc::TimedRobot {
- public:
+class Robot : public frc::TimedRobot
+{
+public:
   static std::unique_ptr<DriveStraightAutonomous> autonomousCommand;
   static AutonomousChooser AutoChooser;
- private:
+
+private:
   void RobotInit() override;
   void RobotPeriodic() override;
   void DisabledInit() override;
@@ -25,4 +25,6 @@ class Robot : public frc::TimedRobot {
   void TeleopPeriodic() override;
   void TestPeriodic() override;
   void AddSmartDashboardItems();
+
+  RobotContainer mRobotContainer;
 };
