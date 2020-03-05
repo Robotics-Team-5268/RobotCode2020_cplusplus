@@ -29,28 +29,6 @@ void Drive::InitDefaultCommand() {
   SetDefaultCommand(new DriveWithJoystick());
 }
 
-void Drive::takeInput() {
-	float leftSpeed = -RobotContainer::oi->getDriverJoystick()->GetRawAxis(1);
-	float rightSpeed = -RobotContainer::oi->getDriverJoystick()->GetRawAxis(5);
-
-	if (leftSpeed > mOldLeftSpeed + MAX_CHANGE) leftSpeed = mOldLeftSpeed + MAX_CHANGE;
-	else if (leftSpeed < mOldLeftSpeed - MAX_CHANGE) leftSpeed = mOldLeftSpeed - MAX_CHANGE;
-	if (rightSpeed > mOldRightSpeed + MAX_CHANGE) rightSpeed = mOldRightSpeed + MAX_CHANGE;
-	else if (rightSpeed < mOldRightSpeed - MAX_CHANGE) rightSpeed = mOldRightSpeed - MAX_CHANGE;
-
-    if (leftSpeed >= .9 && rightSpeed >= .9) {
-	  setMotors(1, 1);
-    } else {
-	  setMotors(leftSpeed, rightSpeed);
-    }
-
-	mOldLeftSpeed = leftSpeed;
-	mOldRightSpeed = rightSpeed;
-
-
-	//fout << getGyroRate() << '\n';
-}
-
 void Drive::setMotors(float aLeftSpeed, float aRightSpeed) {
 	mDiffDrive.TankDrive(aLeftSpeed, aRightSpeed, false);
 
