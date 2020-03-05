@@ -5,14 +5,11 @@
 #include <frc/smartdashboard/SendableChooser.h>
 
 #include "RobotContainer.h"
-#include "commands/DriveStraightAutonomous.h"
-#include "AutonomousChooser.h"
 
 class Robot : public frc::TimedRobot
 {
 public:
-  static std::unique_ptr<DriveStraightAutonomous> autonomousCommand;
-  static AutonomousChooser AutoChooser;
+  Robot();
 
 private:
   void RobotInit() override;
@@ -27,4 +24,6 @@ private:
   void AddSmartDashboardItems();
 
   RobotContainer mRobotContainer;
+
+  frc::Command* mAutonomousCommand;
 };

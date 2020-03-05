@@ -1,7 +1,6 @@
 #include "Robot.h"
 
 #include "RobotConfig.h"
-#include "commands/DriveStraightAutonomous.h"
 #include "subsystems/Drive.h"
 #include "RobotContainer.h"
 #include "Vision.hpp"
@@ -9,10 +8,13 @@
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
-std::unique_ptr<DriveStraightAutonomous> Robot::autonomousCommand;
-AutonomousChooser Robot::AutoChooser;
-
 static std::unique_ptr<Vision> vision;
+
+Robot::Robot()
+    : mAutonomousCommand( nullptr )
+{
+
+}
 
 void Robot::RobotInit() {
     vision.reset( new Vision() );
@@ -31,8 +33,11 @@ void Robot::DisabledPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
 void Robot::AutonomousInit()
 {
-	autonomousCommand.reset( new DriveStraightAutonomous() );
-	autonomousCommand->Start();
+    mAutonomousCommand = mRobotContainer.GetAutonomousCommand();
+    if( mAutonomousCommand != nullptr )
+    {
+        mAutonomousCommand->Start();
+    }
 }
 
 void Robot::AutonomousPeriodic() { 
@@ -40,7 +45,15 @@ void Robot::AutonomousPeriodic() {
     AddSmartDashboardItems();
 }
 
-void Robot::TeleopInit() {
+void Robot::TeleopInit()
+{
+	// Protect against a NULL autonomous command in case testing bypasses the auto phase
+    if (mAutonomousCommand != nullptr)
+    {
+        mAutonomousCommand->Cancel();
+        mAutonomousCommand = nullptr;
+    }
+
 	//frc::SmartDashboard::PutNumber("breakpoint", 200);
 	#if( GYRO_SUPPORT )
 		RobotContainer::drive->resetGyro();

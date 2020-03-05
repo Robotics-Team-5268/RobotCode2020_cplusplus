@@ -9,3 +9,23 @@ Autonomous::Autonomous(int aSelection)
   //"Wes is Stupid and dumb" -Wes
 
 }
+
+void Autonomous::End()
+{
+
+}
+
+void Autonomous::Initialize()
+{
+
+}
+
+void Autonomous::Execute()
+{
+
+}
+
+bool Autonomous::IsFinished()
+{
+  return true;
+}

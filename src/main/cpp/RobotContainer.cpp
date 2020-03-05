@@ -1,5 +1,6 @@
 #include "RobotContainer.h"
 
+#include "AutonomousChooser.h"
 #include "commands/Lift.h"
 #include "commands/MoveArm.h"
 #include "commands/MoveFlipper.h"
@@ -23,6 +24,7 @@ std::unique_ptr<Winches> RobotContainer::winches;
 std::shared_ptr<frc::Joystick> RobotContainer::driverJoystick;
 
 RobotContainer::RobotContainer()
+    : mAutonomousCommand( AutonomousChooser().AutonomousSelection() )
 {
     driverJoystick.reset(new frc::Joystick(0));
     mechanismsJoystick.reset(new frc::Joystick(1));
@@ -42,6 +44,11 @@ RobotContainer::RobotContainer()
 
     // Keep at the end
     ConfigureButtonBindings();
+}
+
+frc::Command* RobotContainer::GetAutonomousCommand()
+{
+    return &mAutonomousCommand;
 }
 
 void RobotContainer::ConfigureButtonBindings()
