@@ -1,17 +1,15 @@
 #pragma once
 
-#include <frc/TimedRobot.h>
-
 #include "commands/Autonomous.h"
-#include "AutonomousChooser.h"
-
-
+#include <frc/TimedRobot.h>
+#include <frc2/command/Command.h>
+#include "RobotContainer.h"
 
 class Robot : public frc::TimedRobot {
- public:
-  static std::unique_ptr<Autonomous> autonomousCommand;
-  static AutonomousChooser AutoChooser;
- private:
+public:
+  Robot();
+
+private:
   void RobotInit() override;
   void RobotPeriodic() override;
   void DisabledInit() override;
@@ -22,4 +20,8 @@ class Robot : public frc::TimedRobot {
   void TeleopPeriodic() override;
   void TestPeriodic() override;
   void AddSmartDashboardItems();
+
+  frc2::Command* mAutonomousCommand;
+
+  RobotContainer mRobotContainer;
 };

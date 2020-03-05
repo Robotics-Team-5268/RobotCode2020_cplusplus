@@ -11,6 +11,8 @@
 Drive::Drive() : frc2::SubsystemBase() {
 	SetName( "Drive" );
 
+	diffDrive.SetSafetyEnabled(false);
+
 	oldLeftSpeed = 0.0;
 	oldRightSpeed = 0.0;
 	velocityToCommandIntercept[0] = -316.89;
@@ -25,28 +27,6 @@ Drive::Drive() : frc2::SubsystemBase() {
 	speedControllerBL.SetInverted(SCBL_INVERTED);
 	speedControllerFR.SetInverted(SCFR_INVERTED);
 	speedControllerBR.SetInverted(SCBR_INVERTED);
-}
-
-void Drive::takeInput() {
-	float leftSpeed = -RobotContainer::oi->getDriverJoystick()->GetRawAxis(1);
-	float rightSpeed = -RobotContainer::oi->getDriverJoystick()->GetRawAxis(5);
-
-	if (leftSpeed > oldLeftSpeed + MAX_CHANGE) leftSpeed = oldLeftSpeed + MAX_CHANGE;
-	else if (leftSpeed < oldLeftSpeed - MAX_CHANGE) leftSpeed = oldLeftSpeed - MAX_CHANGE;
-	if (rightSpeed > oldRightSpeed + MAX_CHANGE) rightSpeed = oldRightSpeed + MAX_CHANGE;
-	else if (rightSpeed < oldRightSpeed - MAX_CHANGE) rightSpeed = oldRightSpeed - MAX_CHANGE;
-
-    if (leftSpeed >= .9 && rightSpeed >= .9) {
-	  setMotors(1, 1);
-    } else {
-	  setMotors(leftSpeed, rightSpeed);
-    }
-
-    oldLeftSpeed = leftSpeed;
-	oldRightSpeed = rightSpeed;
-
-
-	//fout << getGyroRate() << '\n';
 }
 
 void Drive::setMotors(float leftSpeed, float rightSpeed) {

@@ -1,15 +1,25 @@
 #include "commands/MovePneumatics.h"
 
 #include "RobotConfig.h"
-#include "RobotContainer.h"
 
-MovePneumatics::MovePneumatics(frc::DoubleSolenoid::Value v) {
+MovePneumatics::MovePneumatics
+    (
+    frc::DoubleSolenoid::Value v
+    #if( PNEUMATICS_SUPPORT )
+      , Pneumatics* aPneumantics
+    #endif
+    )
+    : value( v )
+    #if( PNEUMATICS_SUPPORT )
+      , mPneumantics( aPneumantics )
+    #endif
+
+{
     SetName( "MovePneumatics" );
 
     #if( PNEUMATICS_SUPPORT )
-        AddRequirements(RobotContainer::pneumatics.get());
+        AddRequirements( mPneumantics );
     #endif
-    value = v;
 }
 
 void MovePneumatics::Initialize() {}
@@ -17,11 +27,11 @@ void MovePneumatics::Initialize() {}
 void MovePneumatics::Execute() {
     #if( PNEUMATICS_SUPPORT )
         if (value == frc::DoubleSolenoid::kForward) {
-            RobotContainer::pneumatics->Forward();
+            mPneumantics->Forward();
         } else if (value == frc::DoubleSolenoid::kReverse){
-            RobotContainer::pneumatics->Reverse();
+            mPneumantics->Reverse();
         } else {
-            RobotContainer::pneumatics->Off();
+            mPneumantics->Off();
         }
     #endif
 }

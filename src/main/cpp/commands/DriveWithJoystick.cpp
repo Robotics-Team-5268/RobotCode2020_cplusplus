@@ -1,9 +1,10 @@
 #include "commands/DriveWithJoystick.h"
 
-#include "RobotContainer.h"
-
-DriveWithJoystick::DriveWithJoystick() {
-  AddRequirements( RobotContainer::drive.get()) ;
+DriveWithJoystick::DriveWithJoystick( Drive* aDrive, const std::shared_ptr<frc::Joystick>& aJoystick )
+  : mDrive( aDrive )
+  , mJoystick( aJoystick )
+{
+  AddRequirements( mDrive ) ;
 
   SetName( "DriveWithJoystick" );
 }
@@ -11,11 +12,10 @@ DriveWithJoystick::DriveWithJoystick() {
 void DriveWithJoystick::Initialize() {}
 
 void DriveWithJoystick::Execute() {
-  RobotContainer::drive->setMotors(
-    -RobotContainer::oi->getDriverJoystick()->GetRawAxis(1) ,
-	  -RobotContainer::oi->getDriverJoystick()->GetRawAxis(5)
-    // 0.0,0.0
-  );
+  mDrive->setMotors(
+    -mJoystick->GetRawAxis(1) ,
+	  -mJoystick->GetRawAxis(5)
+    );
 }
 
 bool DriveWithJoystick::IsFinished() { return true; }

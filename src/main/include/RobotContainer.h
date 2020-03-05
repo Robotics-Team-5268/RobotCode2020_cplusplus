@@ -1,26 +1,39 @@
 #pragma once
 
 #include <memory>
-
-#include <string.h>
+#include <vector>
 
 #include "RobotConfig.h"
+#include "commands/Autonomous.h"
 #include "subsystems/ColorWheel.h"
 #include "subsystems/Drive.h"
 #if( PNEUMATICS_SUPPORT )
     #include "subsystems/Pneumatics.h"
 #endif
-#include "OI.h"
+
+#include <frc/Joystick.h>
+#include <frc2/command/button/JoystickButton.h>
 
 class RobotContainer
 {
- public:
-  static void init();
+public:
+    RobotContainer();
 
-  static std::unique_ptr<ColorWheel> colorWheel;
-  static std::unique_ptr<Drive> drive;
-  #if( PNEUMATICS_SUPPORT )
-      static std::unique_ptr<Pneumatics> pneumatics;
-  #endif
-  static std::unique_ptr<OI> oi;
+    frc2::Command* GetAutonomousCommand();
+private:
+    void ConfigureButtonBindings();
+
+    std::shared_ptr<frc::Joystick> mDriverJoystick;
+    std::vector<frc2::JoystickButton*> mDriverButtons;
+
+    std::shared_ptr<frc::Joystick> mMechanismsJoystick;
+    std::vector<frc2::JoystickButton*> mMechanismsButtons;
+
+    ColorWheel mColorWheel;
+    Drive mDrive;
+    #if( PNEUMATICS_SUPPORT )
+        Pneumatics mPneumatics;
+    #endif
+
+    Autonomous mAutonomousCommand;
 };

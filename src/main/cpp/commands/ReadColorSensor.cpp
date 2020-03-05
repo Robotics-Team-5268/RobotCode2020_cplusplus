@@ -1,10 +1,11 @@
 #include <commands/ReadColorSensor.h>
-#include "RobotContainer.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <subsystems/ColorWheel.h>
 
-ReadColorSensor::ReadColorSensor()  {
-    AddRequirements( RobotContainer::colorWheel.get() );
+ReadColorSensor::ReadColorSensor( ColorWheel* aColorWheel )
+    : mColorWheel( aColorWheel )
+{
+    AddRequirements( mColorWheel );
 
     SetName( "ReadColorSensor" );
 }
@@ -12,7 +13,7 @@ ReadColorSensor::ReadColorSensor()  {
 void ReadColorSensor::Initialize() {}
 
 void ReadColorSensor::Execute() {
-    ColorWheel::ColorReading colorReading = RobotContainer::colorWheel->readColorSensor();
+    ColorWheel::ColorReading colorReading = mColorWheel->readColorSensor();
 
     std::string colorString = "No Match";
     switch( colorReading.matchedColor )

@@ -35,8 +35,6 @@ class Drive : public frc2::SubsystemBase {
  public:
 	Drive();
 	virtual void setMotors(float leftSpeed, float rightSpeed);
-	virtual void safetyOff() {diffDrive.SetSafetyEnabled(false);}
-	virtual void takeInput();
 	#if( GYRO_SUPPORT )
 	    frc::AnalogGyro* getGyro();
 	    float getGyroAngle();
