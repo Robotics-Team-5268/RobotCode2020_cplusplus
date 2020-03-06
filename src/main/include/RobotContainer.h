@@ -26,18 +26,18 @@ public:
 private:
   void ConfigureButtonBindings();
 
-  BallIntake ballIntake;
-  ColorWheel colorWheel;
-  Drive drive;
-  IntakeFlipper intakeFlipper;
-  LiftArm liftArm;
-  Pneumatics pneumatics;
-  Winches winches;
+  BallIntake mBallIntake;
+  ColorWheel mColorWheel;
+  Drive mDrive;
+  IntakeFlipper mIntakeFlipper;
+  LiftArm mLiftArm;
+  Pneumatics mPneumatics;
+  Winches mWinches;
 
-  std::shared_ptr<frc::Joystick> driverJoystick;
-  std::shared_ptr<frc::Joystick> mechanismsJoystick;
-  std::vector<frc2::JoystickButton*> driverBtns;
-  std::vector<frc2::JoystickButton*> mechanismsBtns;
+  std::shared_ptr<frc::Joystick> mDriverJoystick;
+  std::shared_ptr<frc::Joystick> mMechanismsJoystick;
+  std::vector<frc2::JoystickButton*> mDriverBtns;
+  std::vector<frc2::JoystickButton*> mMechanismsBtns;
 
   Autonomous mAutonomousCommand;
 };

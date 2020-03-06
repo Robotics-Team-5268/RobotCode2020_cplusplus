@@ -17,20 +17,20 @@
 #include "commands/Telescope.h"
 
 RobotContainer::RobotContainer()
-    : mAutonomousCommand( &drive, AutonomousChooser().AutonomousSelection() )
+    : mAutonomousCommand( &mDrive, AutonomousChooser().AutonomousSelection() )
 {
-    driverJoystick.reset(new frc::Joystick(0));
-    mechanismsJoystick.reset(new frc::Joystick(1));
+    mDriverJoystick.reset(new frc::Joystick(0));
+    mMechanismsJoystick.reset(new frc::Joystick(1));
     for (int i=1; i<=10; i++)
     {
-        driverBtns.push_back(new frc2::JoystickButton(driverJoystick.get(), i));
-        mechanismsBtns.push_back(new frc2::JoystickButton(mechanismsJoystick.get(), i));
+        mDriverBtns.push_back(new frc2::JoystickButton(mDriverJoystick.get(), i));
+        mMechanismsBtns.push_back(new frc2::JoystickButton(mMechanismsJoystick.get(), i));
     }
 
-    drive.SetDefaultCommand( DriveWithJoystick( &drive, driverJoystick ) );
+    mDrive.SetDefaultCommand( DriveWithJoystick( &mDrive, mDriverJoystick ) );
 
 	#if( GYRO_SUPPORT )
-		drive.calibrateGyro();
+		mDrive.calibrateGyro();
 	#endif
 
     // Keep at the end
@@ -44,35 +44,35 @@ frc2::Command* RobotContainer::GetAutonomousCommand()
 
 void RobotContainer::ConfigureButtonBindings()
 {
-    driverBtns[4]->WhenPressed(new ShiftGears( &pneumatics, frc::DoubleSolenoid::kReverse)); // LB, shift down
-    driverBtns[5]->WhenPressed(new ShiftGears( &pneumatics, frc::DoubleSolenoid::kForward)); // RB, shift up
+    mDriverBtns[4]->WhenPressed(new ShiftGears( &mPneumatics, frc::DoubleSolenoid::kReverse)); // LB, shift down
+    mDriverBtns[5]->WhenPressed(new ShiftGears( &mPneumatics, frc::DoubleSolenoid::kForward)); // RB, shift up
 
-    mechanismsBtns[0]->WhileHeld( new Lift( &winches, true ) );
-    //mechanismsBtns[7]->WhileHeld( new Lift( &winches, false ) ); // Not currently used.  Will ratchet down after round
+    mMechanismsBtns[0]->WhileHeld( new Lift( &mWinches, true ) );
+    //mMechanismsBtns[7]->WhileHeld( new Lift( &mWinches, false ) ); // Not currently used.  Will ratchet down after round
 
-    mechanismsBtns[1]->WhileHeld( new Telescope( &winches, true ) ); // B
-    mechanismsBtns[3]->WhileHeld( new Telescope( &winches, false ) ); // Y
+    mMechanismsBtns[1]->WhileHeld( new Telescope( &mWinches, true ) ); // B
+    mMechanismsBtns[3]->WhileHeld( new Telescope( &mWinches, false ) ); // Y
 
-    mechanismsBtns[2]->WhenPressed( new SpinColor( &colorWheel ) ); // X
+    mMechanismsBtns[2]->WhenPressed( new SpinColor( &mColorWheel ) ); // X
 
     // RB
-    mechanismsBtns[4]->WhenPressed( new MoveFlipper( &intakeFlipper, true ) );
-    mechanismsBtns[4]->WhileHeld( new ShootBall( &ballIntake ) );
-    mechanismsBtns[4]->WhenReleased( new MoveFlipper( &intakeFlipper, false ) );
+    mMechanismsBtns[4]->WhenPressed( new MoveFlipper( &mIntakeFlipper, true ) );
+    mMechanismsBtns[4]->WhileHeld( new ShootBall( &mBallIntake ) );
+    mMechanismsBtns[4]->WhenReleased( new MoveFlipper( &mIntakeFlipper, false ) );
 
     // LB
-    mechanismsBtns[5]->WhileHeld( new PickupBall( &ballIntake ) );
+    mMechanismsBtns[5]->WhileHeld( new PickupBall( &mBallIntake ) );
 
-    // mechanismsBtns[2]->WhileHeld( new ReadColorSensor( &colorWheel ) ); // Test command not currently used
+    // mMechanismsBtns[2]->WhileHeld( new ReadColorSensor( &mColorWheel ) ); // Test command not currently used
 
     // R3
-    mechanismsBtns[6]->WhenPressed(new MoveStinger( &pneumatics, frc::DoubleSolenoid::kForward));
-    // mechanismsBtns[3]->WhenPressed(new MoveStinger( &pneumatics, frc::DoubleSolenoid::kReverse ) ); // Not currently retracting the stinger
+    mMechanismsBtns[6]->WhenPressed(new MoveStinger( &mPneumatics, frc::DoubleSolenoid::kForward));
+    // mMechanismsBtns[3]->WhenPressed(new MoveStinger( &mPneumatics, frc::DoubleSolenoid::kReverse ) ); // Not currently retracting the stinger
 
     // The game requires 3-5 spins.  Start at 4 to maximimize error tolerance
     const int desiredRotations = 4;
-    mechanismsBtns[7]->WhenPressed( new SpinRotations( &colorWheel, desiredRotations ) ); // RT - need to fix
+    mMechanismsBtns[7]->WhenPressed( new SpinRotations( &mColorWheel, desiredRotations ) ); // RT - need to fix
 
-    mechanismsBtns[8]->WhenPressed( new MoveArm( &liftArm, true ) ); // L3
-    mechanismsBtns[9]->WhenPressed( new MoveArm( &liftArm, false ) ); // R3
+    mMechanismsBtns[8]->WhenPressed( new MoveArm( &mLiftArm, true ) ); // L3
+    mMechanismsBtns[9]->WhenPressed( new MoveArm( &mLiftArm, false ) ); // R3
 }
