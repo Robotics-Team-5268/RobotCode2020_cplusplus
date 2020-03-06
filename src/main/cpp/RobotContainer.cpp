@@ -1,7 +1,5 @@
 #include "RobotContainer.h"
 
-#include "RobotConfig.h"
-
 #include "AutonomousChooser.h"
 #include "commands/DriveWithJoystick.h"
 #include "commands/Lift.h"
@@ -29,9 +27,7 @@ RobotContainer::RobotContainer()
 
     mDrive.SetDefaultCommand( DriveWithJoystick( &mDrive, mDriverJoystick ) );
 
-	#if( GYRO_SUPPORT )
-		mDrive.calibrateGyro();
-	#endif
+	mDrive.calibrateGyro();
 
     // Keep at the end
     ConfigureButtonBindings();

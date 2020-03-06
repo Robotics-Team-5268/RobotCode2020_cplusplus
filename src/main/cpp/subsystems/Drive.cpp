@@ -28,7 +28,8 @@ Drive::Drive()
 	mDiffDrive.SetSafetyEnabled(false);
 }
 
-void Drive::setMotors(float aLeftSpeed, float aRightSpeed) {
+void Drive::setMotors(float aLeftSpeed, float aRightSpeed)
+{
 	mDiffDrive.TankDrive(aLeftSpeed, aRightSpeed, false);
 
 	frc::SmartDashboard::PutNumber("Speed Controller FL", mSpeedControllerFL.Get());
@@ -37,25 +38,28 @@ void Drive::setMotors(float aLeftSpeed, float aRightSpeed) {
 	frc::SmartDashboard::PutNumber("Speed Controller BR", mSpeedControllerBR.Get());
 }
 
-#if( GYRO_SUPPORT )
-	frc::AnalogGyro* Drive::getGyro() {
-		return &mGyro;
-	}
-	float Drive::getGyroAngle() {
-		return mGyro.GetAngle();
-	}
-	float Drive::getGyroRate() {
-		return mGyro.GetRate();
-	}
-	void Drive::resetGyro() {
-		mGyro.Reset();
-	}
-	void Drive::calibrateGyro() {
-		mGyro.Calibrate();
-	}
-#endif
+float Drive::getGyroAngle()
+{
+	return mGyro.GetAngle();
+}
 
-void Drive::SetVelocity(float aLeft, float aRight) {
+float Drive::getGyroRate()
+{
+	return mGyro.GetRate();
+}
+
+void Drive::resetGyro()
+{
+	mGyro.Reset();
+}
+
+void Drive::calibrateGyro()
+{
+	mGyro.Calibrate();
+}
+
+void Drive::SetVelocity(float aLeft, float aRight)
+{
 	float leftSpeed = aLeft * MAX_SPEED;
 	float rightSpeed = aRight * MAX_SPEED;
 	if (leftSpeed < 0) {

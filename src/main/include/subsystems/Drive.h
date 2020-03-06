@@ -7,7 +7,6 @@
 #include <ctre/Phoenix.h>
 #include <frc/Ultrasonic.h>
 
-#include "RobotConfig.h"
 #include "RobotMap.h"
 
 class Drive : public frc2::SubsystemBase {
@@ -28,20 +27,17 @@ class Drive : public frc2::SubsystemBase {
 	float mVelocityToCommandSlope[4];
 	float mVelocityToCommandIntercept[4];
 
-    #if( GYRO_SUPPORT )
-	    frc::AnalogGyro mGyro{GYRO_ANALOG_PORT};
-    #endif
+	frc::AnalogGyro mGyro{GYRO_ANALOG_PORT};
 
     //std::ofstream fout;
  public:
 	Drive();
 	virtual void setMotors(float aLeftSpeed, float aRightSpeed);
-	#if( GYRO_SUPPORT )
-	    frc::AnalogGyro* getGyro();
-	    float getGyroAngle();
-	    float getGyroRate();
-	    void resetGyro();
-	    void calibrateGyro();
-	#endif
+
+	float getGyroAngle();
+	float getGyroRate();
+	void resetGyro();
+	void calibrateGyro();
+
 	void SetVelocity(float aLeft, float aRight);
 };
